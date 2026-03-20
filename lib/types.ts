@@ -7,4 +7,5 @@ slug: string
   tags?: string[]
   published?: boolean
   content: string
+  featured?: boolean
 }

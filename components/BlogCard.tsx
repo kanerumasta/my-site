@@ -16,15 +16,15 @@ export default function BlogCard({ post }: BlogCardProps) {
   return (
     <Link
   href={`/blog/${post.slug}`}
-  className="block border-b flex justify-between border-white/10 py-5 hover:shadow-md transition"
+  className="block border-b  border-foreground/10 hover:scale-101 transition"
 
 >
-
-    <div>
         <div className="flex items-center space-x-2 mb-3">
             <div className="h-6 w-6 rounded-full bg-blue-300"/>
             <p>Mac Ibale</p>
         </div>
+<div className="flex justify-between gap-6">
+    <div>
       <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
 
       <p className="text-md text-gray-500 mb-3">{new Date(post.date).toLocaleDateString('en-US', {
@@ -44,11 +44,11 @@ export default function BlogCard({ post }: BlogCardProps) {
   <img
     src={post.image}
     alt={post.title}
-    className="w-[200px] rounded-xl mb-6"
+    className="w-[300px] rounded-xl mb-6"
   />
 )}
       </div>
-
+</div>
     </Link>
   )
 }

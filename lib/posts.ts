@@ -24,6 +24,7 @@ export function getPosts(): TBlogPost[] {
       excerpt: data.excerpt ?? '',
       tags: data.tags ?? [],
       published: data.published ?? true,
+      featured: data.featured ?? false,
       content,
     }
   })

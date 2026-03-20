@@ -1,13 +1,19 @@
-// /components/Navbar.tsx
+import ThemeToggle from "./ThemeToggle";
+
 export default function Navbar() {
   return (
-    <nav className="flex mb-4 justify-between p-4 sticky top-0 bg-[#0a0a0a]" >
-      <span className="font-bold">Mac</span>
+    <nav className="z-30 w-full border-b border-foreground/10 sticky top-0 bg-background/80 backdrop-blur">
+      
+      <div className="max-w-3xl mx-auto flex items-center justify-between h-15">
+        <span className="font-bold">Mac</span>
 
-      <div className="space-x-4">
-        <a href="/" className="text-sm">Home</a>
-        <a href="/blog" className="text-sm">Blog</a>
+        <div className="space-x-4 flex items-center">
+          <a href="/" className="text-sm">Home</a>
+          <a href="/blog" className="text-sm">Blog</a>
+          <ThemeToggle />
+        </div>
       </div>
+
     </nav>
   )
 }
