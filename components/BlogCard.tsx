@@ -16,25 +16,25 @@ export default function BlogCard({ post }: BlogCardProps) {
   return (
     <Link
   href={`/blog/${post.slug}`}
-  className="block border-b  border-foreground/10 hover:scale-101 transition"
+  className="block border-b py-3  border-foreground/10 hover:scale-101 transition"
 
 >
         <div className="flex items-center space-x-2 mb-3">
-            <div className="h-6 w-6 rounded-full bg-blue-300"/>
+            <div className="h-6 w-6 rounded-md bg-blue-300"/>
             <p>Mac Ibale</p>
         </div>
 <div className="flex justify-between gap-6">
     <div>
-      <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
+      <h3 className="md:text-xl text-lg font-semibold mb-2">{post.title}</h3>
 
-      <p className="text-md text-gray-500 mb-3">{new Date(post.date).toLocaleDateString('en-US', {
+      <p className="text-sm md:text-md text-gray-500 mb-3">{new Date(post.date).toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
     year: 'numeric',
   })}</p>
 
       {post.excerpt && (
-        <p className="text-gray-600 text-md line-clamp-2">
+        <p className="text-gray-600 text-sm md:text-md line-clamp-2">
           {post.excerpt}
         </p>
       )}
@@ -44,7 +44,7 @@ export default function BlogCard({ post }: BlogCardProps) {
   <img
     src={post.image}
     alt={post.title}
-    className="w-[300px] rounded-xl mb-6"
+    className="min-w-25 max-w-38 md:max-w-50 rounded-xl mb-6"
   />
 )}
       </div>

@@ -20,11 +20,12 @@ export default function BlogLayout(
     year: 'numeric',
   })}</p>
         </div>
+    
     {post.image && (
   <img
     src={post.image}
     alt={post.title}
-    className="w-full rounded-xl mb-6"
+    className="w-full rounded-md md:rounded-xl my-8"
   />
 )}
 
