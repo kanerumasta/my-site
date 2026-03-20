@@ -12,7 +12,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   if (!post) return notFound()
 
   return (
-        <BlogLayout title={post.title} date={post.date} image={post.image}>
+        <BlogLayout post={post}>
             <MDXRemote source={post.content} />
     </BlogLayout>
   )

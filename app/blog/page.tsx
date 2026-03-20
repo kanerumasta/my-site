@@ -11,30 +11,21 @@ export default function BlogPage() {
       {posts.map((post) => (
         <BlogCard
             key={post.slug}
-            title={post.title}
-            date={post.date}
-            slug={post.slug}
-            excerpt='This is the one that we are looking for..... '
+            post={post}
           />
           
       ))}
       {posts.map((post) => (
         <BlogCard
             key={post.slug}
-            title={post.title}
-            date={post.date}
-            slug={post.slug}
-            excerpt='This is the one that we are looking for..... '
+            post={post}
           />
           
       ))}
       {posts.map((post) => (
         <BlogCard
             key={post.slug}
-            title={post.title}
-            date={post.date}
-            slug={post.slug}
-            excerpt='This is the one that we are looking for..... '
+            post={post}
           />
           
       ))}

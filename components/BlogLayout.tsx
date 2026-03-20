@@ -1,16 +1,29 @@
-export default function BlogLayout({ children, title, date, image}:{children: React.ReactNode, title:string, date: string, image:string}) {
+import { TBlogPost } from "@/lib/types";
+
+type BlogLayoutProps = {
+  post: TBlogPost
+  children: React.ReactNode
+}
+
+export default function BlogLayout(
+  {post, children}: BlogLayoutProps
+) {
   return (
     <div className="">
       
       {/* Header */}
       <div className="mb-12 border-b pb-6">
-        <h1 className="text-5xl font-extrabold">{title}</h1>
-        <p className="text-gray-500 mt-3">{date}</p>
+        <h1 className="text-5xl font-extrabold">{post.title}</h1>
+        <p className="text-gray-500 mt-3">{new Date(post.date).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  })}</p>
         </div>
-    {image && (
+    {post.image && (
   <img
-    src={image}
-    alt={title}
+    src={post.image}
+    alt={post.title}
     className="w-full rounded-xl mb-6"
   />
 )}
