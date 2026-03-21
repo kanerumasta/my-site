@@ -1,9 +1,11 @@
 @import "tailwindcss";
 :root {
   --background: #ffffff;
-  --foreground: #0f0f11;
+  --foreground: #171717;
 
-    --primary: #3b82f6; 
+    --primary: #02bb65; 
+    /* --primary: #3b82f6;  */
+     /* --primary: #ff8222;  */
 
   --primary-foreground: #ffffff;
 }
@@ -13,7 +15,10 @@
   --foreground: #c7c7c7;
 
 
-  --primary: #6098f2; 
+  /* --primary: #6098f2;  */
+
+  --primary: #02bb65; 
+  /* --primary: #ff892f;  */
   --primary-foreground: #ffffff;
 }
 
@@ -35,3 +40,12 @@
 #nprogress .peg {
   box-shadow: 0 0 10px var(--primary), 0 0 5px var(--primary);
 }
+.blob-clip { 
+  -webkit-mask-image: url('/images/blob.png'); 
+  mask-image: url('/images/blob.png'); 
+  -webkit-mask-size: contain; 
+  mask-size: contain; 
+  -webkit-mask-repeat: no-repeat; 
+  mask-repeat: no-repeat; 
+  -webkit-mask-position: unset; 
+  mask-position: bottom; }
