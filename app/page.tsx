@@ -1,17 +1,16 @@
 import Image from "next/image";
-
 export default function Home() {
   return (
-    <main className="max-w-3xl mx-auto py-16 px-5">
+    <main className="max-w-3xl mx-auto py-20">
 
       {/* HERO */}
-      <section className="mb-20">
-        <h1 className="text-5xl font-bold tracking-tight mb-4">
-          Hi, I'm Mac 👋
+      <section className="mb-24">
+        <h1 className="text-5xl font-bold tracking-tight mb-6 leading-tight">
+          Building systems that <span className="text-primary">work smarter</span>
         </h1>
 
-        <p className="text-lg text-gray-500 max-w-xl leading-relaxed mb-6">
-          I build systems, automate workflows, and create modern web applications.
+        <p className="text-lg text-gray-400 max-w-xl leading-relaxed mb-8">
+          I'm Mac — a developer focused on automation, scalable systems, and modern web apps.
         </p>
 
         <div className="flex gap-4">
@@ -32,42 +31,72 @@ export default function Home() {
       </section>
 
       {/* ABOUT */}
-      <section className="mb-20">
-        <h2 className="text-xl font-semibold mb-4 text-gray-400 uppercase tracking-wide">
+      <section className="mb-24">
+        <h2 className="text-xs uppercase tracking-widest text-gray-500 mb-4">
           About
         </h2>
 
-        <p className="text-gray-300 leading-7">
-          I'm a developer focused on building efficient systems and solving real-world problems.
-          I enjoy working with Next.js, automation, and backend integrations. I like turning complex
-          workflows into simple, scalable solutions.
+        <p className="text-gray-300 leading-7 max-w-2xl">
+          I specialize in building efficient systems and solving real-world problems.
+          From PDF processing pipelines to workflow automation, I enjoy simplifying
+          complex processes into scalable solutions.
         </p>
       </section>
 
       {/* PROJECTS */}
       <section id="projects">
-        <h2 className="text-xl font-semibold mb-6 text-gray-400 uppercase tracking-wide">
+        <h2 className="text-xs uppercase tracking-widest text-gray-500 mb-6">
           Projects
         </h2>
 
-        <div className="grid gap-6">
+        <div className="grid grid-cols-2 gap-6">
 
-          <div className="border border-white/10 p-5 rounded-xl hover:bg-white/5 transition">
-            <h3 className="font-semibold text-lg mb-2">
+          {/* PROJECT CARD */}
+          <div className="row-span-2 group border border-white/10 p-6 rounded-2xl hover:bg-white/5 transition">
+         
+            <div>
+               <img
+                  src="/images/echoease.png"
+                  className="w-100"
+                />
+            </div>
+             <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition">
+              Echoease
+            </h3>
+            <p className="text-sm text-gray-400 leading-relaxed mb-4">
+              High-performance pipeline for processing large-scale PDF documents with efficiency and reliability.
+            </p>
+
+            <span className="text-xs text-gray-500">
+              Django · Nextjs · Backend
+            </span>
+          </div>
+          <div className="group border border-white/10 p-6 rounded-2xl hover:bg-white/5 transition">
+            <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition">
               PDF Processing System
             </h3>
-            <p className="text-sm text-gray-400 leading-relaxed">
-              A system that processes large-scale PDF documents efficiently, optimized for performance and scalability.
+
+            <p className="text-sm text-gray-400 leading-relaxed mb-4">
+              High-performance pipeline for processing large-scale PDF documents with efficiency and reliability.
             </p>
+
+            <span className="text-xs text-gray-500">
+              Python · Automation · Backend
+            </span>
           </div>
 
-          <div className="border border-white/10 p-5 rounded-xl hover:bg-white/5 transition">
-            <h3 className="font-semibold text-lg mb-2">
+          <div className="group border border-white/10 p-6 rounded-2xl hover:bg-white/5 transition">
+            <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition">
               Workflow Automation Tool
             </h3>
-            <p className="text-sm text-gray-400 leading-relaxed">
-              Automation platform designed to streamline administrative processes and reduce manual work.
+
+            <p className="text-sm text-gray-400 leading-relaxed mb-4">
+              System designed to streamline admin workflows and reduce manual processes.
             </p>
+
+            <span className="text-xs text-gray-500">
+              Next.js · Dataverse · Automation
+            </span>
           </div>
 
         </div>

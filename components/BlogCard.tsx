@@ -5,7 +5,7 @@ import Link from "next/link"
 
 type TBlogCard = Pick<
   TBlogPost,
-  'slug' | 'title' | 'date' | 'excerpt' | 'image'
+  'slug' | 'title' | 'date' | 'excerpt' | 'image' | 'tags'
 >
 
 type BlogCardProps = {
@@ -34,10 +34,15 @@ export default function BlogCard({ post }: BlogCardProps) {
   })}</p>
 
       {post.excerpt && (
-        <p className="text-gray-600 text-sm md:text-md line-clamp-2">
+        <p className="text-foreground/75 text-sm md:text-md line-clamp-2 mb-4">
           {post.excerpt}
         </p>
       )}
+      {post.tags && post.tags.map((tag, index) => (
+        <span key={index} className="text-xs p-1 px-3 border text-foreground/80 rounded-full mr-2 border-foreground/30">
+          #{tag}
+        </span>
+      ))}
       </div>
       <div className="">
         {post.image && (
