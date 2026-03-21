@@ -28,21 +28,21 @@ export default function Home() {
           </a>
         </div>
 
-<div className="bottom-0 right-0 w-150 aspect-square relative">
+{/* <div className="bottom-0 right-0 w-150 aspect-square relative"> */}
 
   {/* BLOB BACKGROUND */}
-  <img
-    src="/images/blob.png"
-    className="absolute inset-0 w-full translate-y-4 h-full object-contain"
-  />
+  {/* <img */}
+    {/* src="/images/blob.png" */}
+    {/* className="absolute inset-0 w-full translate-y-4 h-full object-contain" */}
+  {/* /> */}
 
   {/* HERO IMAGE */}
-  <img
-    src="/images/hero.png"
-    className="absolute inset-0 w-full h-full object-contain blob-clip"
-  />
+  {/* <img */}
+    {/* src="/images/hero.png" */}
+    {/* className="absolute inset-0 w-full h-full object-contain blob-clip" */}
+  {/* /> */}
 
-</div>
+{/* </div> */}
 
 
       </section>
