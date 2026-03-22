@@ -66,7 +66,7 @@ export default function Home() {
           Projects
         </h2>
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
 
           {/* PROJECT CARD */}
           <div className="row-span-2 group border border-white/10 p-6 rounded-2xl hover:bg-white/5 transition">
