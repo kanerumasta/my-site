@@ -2,6 +2,8 @@ import { getPosts } from '@/lib/posts'
 import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import BlogLayout from '@/components/BlogLayout'
+import { Note } from '@/components/Note'
+import CodeBlock from '@/components/CodeBlock'
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -11,9 +13,18 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   if (!post) return notFound()
 
+  // Define your custom components
+  const components = {
+    Note,
+    CodeBlock,
+  }
+
   return (
-        <BlogLayout post={post}>
-            <MDXRemote source={post.content} />
+    <BlogLayout post={post}>
+      <MDXRemote 
+        source={post.content} 
+        components={components}  // Pass the components here
+      />
     </BlogLayout>
   )
 }

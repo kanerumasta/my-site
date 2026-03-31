@@ -49,3 +49,140 @@
   mask-repeat: no-repeat; 
   -webkit-mask-position: unset; 
   mask-position: bottom; }
+
+#blog-content h2{
+  font-size: large;
+  margin-bottom: 16px;
+  margin-top: 24px;
+  font-weight: bold;
+}
+
+#blog-content li{
+  
+}
+
+/* Prose customizations for blog content */
+@layer components {
+  .prose {
+    font-family: var(--font-source-serif);
+  }
+  
+  .prose h1 {
+    @apply text-4xl font-bold mb-6 mt-8 text-foreground;
+  }
+  
+  .prose h2 {
+    @apply text-3xl font-bold mb-4 mt-6 text-foreground;
+  }
+  
+  .prose h3 {
+    @apply text-2xl font-bold mb-3 mt-4 text-foreground;
+  }
+  
+  .prose h4 {
+    @apply text-xl font-bold mb-2 mt-3 text-foreground;
+  }
+  
+  .prose p {
+    @apply text-foreground leading-relaxed mb-4 opacity-90;
+  }
+  
+  .prose a {
+    @apply text-primary underline hover:opacity-80;
+  }
+  
+  .prose code {
+    @apply bg-gray-100 text-primary px-1.5 py-0.5 rounded text-sm dark:bg-gray-900 font-mono;
+  }
+  
+  .prose pre {
+    @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto dark:bg-gray-950 font-mono;
+  }
+  
+  .prose pre code {
+    @apply bg-transparent text-gray-100 px-0 py-0 rounded-none text-sm;
+  }
+  
+  .prose ul {
+    @apply list-disc list-inside mb-4 text-foreground;
+  }
+  
+  .prose ol {
+    @apply list-decimal list-inside mb-4 text-foreground;
+  }
+  
+  .prose li {
+    @apply mb-2 text-foreground;
+  }
+  
+  .prose img {
+    @apply rounded-lg shadow-md my-6;
+  }
+  
+  .prose blockquote {
+    @apply border-l-4 border-primary pl-4 italic text-foreground opacity-80 my-4;
+  }
+}
+
+/* Prism syntax highlighting colors */
+@layer components {
+  code[class*="language-"],
+  pre[class*="language-"] {
+    @apply bg-transparent text-foreground;
+  }
+
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    @apply text-gray-500;
+  }
+
+  .token.punctuation {
+    @apply text-gray-400;
+  }
+
+  .token.property,
+  .token.tag,
+  .token.boolean,
+  .token.number,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    @apply text-orange-400;
+  }
+
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    @apply text-green-400;
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string {
+    @apply text-blue-400;
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.keyword {
+    @apply text-purple-400;
+  }
+
+  .token.function,
+  .token.class-name {
+    @apply text-yellow-400;
+  }
+
+  .token.regex,
+  .token.important,
+  .token.variable {
+    @apply text-red-400;
+  }
+}
