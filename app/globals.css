@@ -68,11 +68,11 @@
   }
   
   .prose h1 {
-    @apply text-4xl font-bold mb-6 mt-8 text-foreground;
+    @apply text-3xl md:text-4xl font-bold mb-6 mt-8 text-foreground;
   }
   
   .prose h2 {
-    @apply text-3xl font-bold mb-4 mt-6 text-foreground;
+    @apply text-2xl md:text-3xl font-bold mb-4 mt-6 text-foreground;
   }
   
   .prose h3 {
