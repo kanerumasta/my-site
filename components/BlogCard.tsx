@@ -1,4 +1,5 @@
 import { TBlogPost } from "@/lib/types"
+import Image from "next/image"
 import Link from "next/link"
 
 
@@ -20,7 +21,9 @@ export default function BlogCard({ post }: BlogCardProps) {
 
 >
         <div className="flex items-center space-x-2 mb-3">
-            <div className="h-6 w-6 rounded-md bg-blue-300"/>
+            <div className="bg-green-300 rounded-full w-6 h-6 overflow-hidden">
+              <Image src={"/images/hero.png"} alt="Author" width={24} height={24}/>
+            </div>
             <p>Mac Ibale</p>
         </div>
 <div className="flex justify-between gap-6">
