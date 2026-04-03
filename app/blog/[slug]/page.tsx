@@ -4,6 +4,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import BlogLayout from '@/components/BlogLayout'
 import { Note } from '@/components/Note'
 import CodeBlock from '@/components/CodeBlock'
+import { BlogImage } from '@/components/BlogImage'
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -17,6 +18,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const components = {
     Note,
     CodeBlock,
+    BlogImage,
   }
 
   return (
