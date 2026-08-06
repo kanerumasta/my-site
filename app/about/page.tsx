@@ -1,15 +1,22 @@
-export default function AboutPage(){
-    return (
-      <section className="mb-24">
-        <h2 className="text-xs uppercase tracking-widest text-gray-500 mb-4">
-          About
-        </h2>
+import type { Metadata } from "next"
+import Link from "next/link"
 
-        <p className="text-gray-300 leading-7 max-w-2xl">
-          I specialize in building efficient systems and solving real-world problems.
-          From PDF processing pipelines to workflow automation, I enjoy simplifying
-          complex processes into scalable solutions.
-        </p>
-      </section>
-    )
+export const metadata: Metadata = {
+  title: "About",
+  description: "About Mac Ibale, a developer focused on automation, document processing, AI workflows, and modern web applications.",
+  alternates: { canonical: "/about" },
+}
+
+export default function AboutPage() {
+  return (
+    <main className="mx-auto max-w-3xl px-6 py-14">
+      <p className="text-sm font-medium uppercase tracking-[0.18em] text-primary">About</p>
+      <h1 className="mt-2 text-4xl font-bold tracking-tight">I like making complicated work feel simple.</h1>
+      <div className="mt-8 space-y-5 text-lg leading-relaxed text-foreground/70">
+        <p>I’m Mac, a software developer focused on efficient systems and real-world constraints. My work spans PDF processing, workflow automation, AI-assisted tools, integrations, and modern web applications.</p>
+        <p>This site is both a workbench and a record: I publish the architecture decisions, mistakes, and reusable lessons behind the systems I build.</p>
+      </div>
+      <Link href="/services" className="mt-8 inline-block rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">Work with me</Link>
+    </main>
+  )
 }

@@ -5,6 +5,35 @@ import { TBlogPost } from './types'
 
 const postsDirectory = path.join(process.cwd(), 'content')
 
+function requiredString(value: unknown, field: string, filename: string) {
+  if (typeof value !== 'string' || value.trim() === '') {
+    throw new Error(`${filename}: frontmatter field "${field}" must be a non-empty string`)
+  }
+  return value.trim()
+}
+
+function toIsoDate(value: unknown, field: string, filename: string) {
+  const raw = requiredString(value, field, filename)
+  const date = new Date(raw)
+
+  if (Number.isNaN(date.getTime())) {
+    throw new Error(`${filename}: frontmatter field "${field}" is not a valid date`)
+  }
+
+  return date.toISOString()
+}
+
+function readingTime(content: string) {
+  const words = content
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/[^\p{L}\p{N}'’-]+/gu, ' ')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean).length
+
+  return Math.max(1, Math.ceil(words / 220))
+}
+
 export function getPosts(): TBlogPost[] {
   const files = fs
     .readdirSync(postsDirectory)
@@ -16,16 +45,22 @@ export function getPosts(): TBlogPost[] {
 
     const { data, content } = matter(fileContent)
 
+    if (data.tags !== undefined && (!Array.isArray(data.tags) || data.tags.some((tag) => typeof tag !== 'string'))) {
+      throw new Error(`${filename}: frontmatter field "tags" must be an array of strings`)
+    }
+
     return {
       slug: filename.replace('.mdx', ''),
-      title: data.title ?? 'No title',
-      date: data.date ? new Date(data.date).toISOString() : '',
-      image: data.image ?? '',
-      excerpt: data.excerpt ?? '',
-      tags: data.tags ?? [],
-      published: data.published ?? true,
-      featured: data.featured ?? false,
+      title: requiredString(data.title, 'title', filename),
+      date: toIsoDate(data.date, 'date', filename),
+      updated: data.updated ? toIsoDate(data.updated, 'updated', filename) : undefined,
+      image: typeof data.image === 'string' ? data.image : undefined,
+      excerpt: requiredString(data.excerpt, 'excerpt', filename),
+      tags: (data.tags ?? []) as string[],
+      published: data.published === true,
+      featured: data.featured === true,
       content,
+      readingTime: readingTime(content),
     }
   })
 

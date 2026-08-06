@@ -3,8 +3,8 @@ import React from "react";
 
 export function Note({ children }:{children: React.ReactNode}) {
   return (
-    <div className="bg-foreground/5 border-l-4 border-blue-500 p-4 my-6 text-black! rounded">
+    <aside className="my-6 rounded border-l-4 border-blue-500 bg-blue-500/10 p-4 text-foreground">
       {children}
-    </div>
+    </aside>
   )
 }

@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mac Ibale — personal site and build log
+
+A Next.js site with an MDX-powered blog focused on automation, AI workflows, document processing, and reliable software systems.
 
 ## Getting Started
 
@@ -16,7 +18,13 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Set the public production URL before deploying so canonical URLs, the sitemap, RSS feed, and social metadata use the correct domain:
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+```
+
+Posts live in `content/*.mdx`. Required frontmatter fields are `title`, `date`, `excerpt`, and `published: true`. Optional fields include `updated`, `image`, `tags`, and `featured`.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 

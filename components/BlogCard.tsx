@@ -1,62 +1,29 @@
-import { TBlogPost } from "@/lib/types"
+import type { TBlogPost } from "@/lib/types"
 import Image from "next/image"
 import Link from "next/link"
 
-
-
-type TBlogCard = Pick<
-  TBlogPost,
-  'slug' | 'title' | 'date' | 'excerpt' | 'image' | 'tags'
->
-
 type BlogCardProps = {
-  post: TBlogCard
+  post: Pick<TBlogPost, 'slug' | 'title' | 'date' | 'excerpt' | 'image' | 'tags' | 'readingTime'>
 }
 
 export default function BlogCard({ post }: BlogCardProps) {
+  const formattedDate = new Intl.DateTimeFormat('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric',
+  }).format(new Date(post.date))
+
   return (
-    <Link
-  href={`/blog/${post.slug}`}
-  className="block border-b py-3  border-foreground/10 hover:scale-101 transition"
-
->
-        <div className="flex items-center space-x-2 mb-3">
-            <div className="bg-green-300 rounded-full w-6 h-6 overflow-hidden">
-              <Image src={"/images/hero.png"} alt="Author" width={24} height={24}/>
-            </div>
-            <p>Mac Ibale</p>
+    <article className="border-b border-foreground/10 py-7">
+      <Link href={`/blog/${post.slug}`} className="group grid gap-5 sm:grid-cols-[1fr_180px] sm:items-center">
+        <div>
+          <div className="mb-3 flex items-center gap-2 text-sm text-foreground/50">
+            <time dateTime={post.date}>{formattedDate}</time><span aria-hidden="true">·</span><span>{post.readingTime} min read</span>
+          </div>
+          <h2 className="text-xl font-semibold tracking-tight group-hover:text-primary md:text-2xl">{post.title}</h2>
+          {post.excerpt && <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-foreground/65 md:text-base">{post.excerpt}</p>}
+          {post.tags.length > 0 && <ul className="mt-4 flex flex-wrap gap-2" aria-label="Post topics">{post.tags.map((tag) => <li key={tag} className="text-xs text-foreground/50">#{tag}</li>)}</ul>}
         </div>
-<div className="flex justify-between gap-6">
-    <div>
-      <h3 className="md:text-xl text-lg font-semibold mb-2">{post.title}</h3>
-
-      <p className="text-sm md:text-md text-gray-500 mb-3">{new Date(post.date).toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  })}</p>
-
-      {post.excerpt && (
-        <p className="text-foreground/75 text-sm md:text-md line-clamp-2 mb-4">
-          {post.excerpt}
-        </p>
-      )}
-      {post.tags && post.tags.map((tag, index) => (
-        <span key={index} className="text-xs p-1 px-3 border text-foreground/80 rounded-full mr-2 border-foreground/30">
-          #{tag}
-        </span>
-      ))}
-      </div>
-      <div className="">
-        {post.image && (
-  <img
-    src={post.image}
-    alt={post.title}
-    className="min-w-25 max-w-38 md:max-w-50 rounded-xl mb-6"
-  />
-)}
-      </div>
-</div>
-    </Link>
+        {post.image && <div className="relative order-first aspect-[16/9] overflow-hidden rounded-xl bg-foreground/5 sm:order-last"><Image src={post.image} alt="" fill sizes="(min-width: 640px) 180px, 100vw" className="object-cover transition duration-300 group-hover:scale-[1.02]" /></div>}
+      </Link>
+    </article>
   )
 }

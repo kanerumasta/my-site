@@ -1,33 +1,28 @@
-import { Github, Linkedin } from "lucide-react";
-import ThemeToggle from "./ThemeToggle";
+import Link from "next/link"
+import { Github, Linkedin } from "lucide-react"
+import ThemeToggle from "./ThemeToggle"
+import { siteConfig } from "@/lib/site"
 
 export default function Navbar() {
   return (
-    <nav className="z-30 w-full border-b border-foreground/10 sticky top-0 bg-background/80 backdrop-blur">
-      
-      <div className="max-w-3xl mx-auto flex items-center justify-between h-15 px-3">
-        <a href="/" className="font-bold text-primary">Mac</a>
+    <nav aria-label="Primary navigation" className="sticky top-0 z-30 w-full border-b border-foreground/10 bg-background/85 backdrop-blur">
+      <div className="mx-auto flex h-15 max-w-5xl items-center justify-between px-6">
+        <Link href="/" className="font-bold text-primary" aria-label={`${siteConfig.name}, home`}>
+          {siteConfig.shortName}
+        </Link>
 
-        <div className="space-x-1 flex items-center">
-      
-          <a  href="/blog" className="text-sm mr-4">Blog</a>
-
-          <a href="https://github.com/kanerumasta" target="_blank" 
-  rel="noopener noreferrer" className="text-sm">
-          <div className="p-2 rounded-full border border-white/10 hover:bg-white/10 transition">
-          <Github size={18}/>
-          </div>
+        <div className="flex items-center gap-1">
+          <Link href="/blog" className="mr-2 rounded-md px-2 py-2 text-sm hover:bg-foreground/5">Blog</Link>
+          <Link href="/services" className="mr-2 hidden rounded-md px-2 py-2 text-sm hover:bg-foreground/5 sm:block">Work with me</Link>
+          <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" aria-label="Mac on GitHub" className="rounded-full border border-foreground/10 p-2 hover:bg-foreground/10">
+            <Github aria-hidden="true" size={18} />
           </a>
-          <a href="https://www.linkedin.com/in/kanerumasta/" target="_blank" 
-  rel="noopener noreferrer" className="text-sm">
-          <div className="p-2 rounded-full border border-white/10 hover:bg-white/10 transition">
-          <Linkedin size={18}/>
-          </div>
+          <a href={siteConfig.linkedIn} target="_blank" rel="noopener noreferrer" aria-label="Mac on LinkedIn" className="rounded-full border border-foreground/10 p-2 hover:bg-foreground/10">
+            <Linkedin aria-hidden="true" size={18} />
           </a>
           <ThemeToggle />
-          </div>
+        </div>
       </div>
-
     </nav>
   )
 }

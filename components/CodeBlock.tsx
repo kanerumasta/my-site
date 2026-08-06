@@ -58,11 +58,11 @@ export default function CodeBlock({ code, language = 'javascript', filename }: C
       {/* Code Container */}
       <div className="relative">
         <pre style={{ whiteSpace: 'pre' }} className="overflow-x-auto p-4 m-0" suppressHydrationWarning>
-          <code
-            className={`font-mono text-sm language-${language}`}
-            dangerouslySetInnerHTML={{ __html: highlightedCode || code }}
-            suppressHydrationWarning
-          />
+          {highlightedCode ? (
+            <code className={`font-mono text-sm language-${language}`} dangerouslySetInnerHTML={{ __html: highlightedCode }} suppressHydrationWarning />
+          ) : (
+            <code className={`font-mono text-sm language-${language}`}>{code}</code>
+          )}
         </pre>
 
         {/* Copy Button */}

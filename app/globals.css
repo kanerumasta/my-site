@@ -1,4 +1,31 @@
 @import "tailwindcss";
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -55,10 +82,6 @@
   margin-bottom: 16px;
   margin-top: 24px;
   font-weight: bold;
-}
-
-#blog-content li{
-  
 }
 
 /* Prose customizations for blog content */

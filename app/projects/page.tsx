@@ -1,89 +1,22 @@
-export default function ProjectsPage(){
-    return (
-        <section id="projects">
-        <h2 className="text-xs uppercase tracking-widest text-gray-500 mb-6">
-          Projects
-        </h2>
+import type { Metadata } from "next"
+import ProjectCard from "@/components/ProjectCard"
+import { projects } from "@/lib/projects"
 
-        <div className="grid grid-cols-2 gap-6">
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "Selected automation, AI workflow, document-processing, and web application projects by Mac Ibale.",
+  alternates: { canonical: "/projects" },
+}
 
-          {/* PROJECT CARD */}
-          <div className="row-span-2 group border border-white/10 p-6 rounded-2xl hover:bg-white/5 transition">
-         
-            <div>
-               <img
-                  src="/images/echoease.png"
-                  className="w-100"
-                />
-            </div>
-             <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition">
-              Echoease
-            </h3>
-            <p className="text-sm text-gray-400 leading-relaxed mb-4">
-              High-performance pipeline for processing large-scale PDF documents with efficiency and reliability.
-            </p>
-
-            <span className="text-xs text-gray-500">
-              Django · Nextjs · Backend
-            </span>
-          </div>
-          <div className="group border border-white/10 p-6 rounded-2xl hover:bg-white/5 transition">
-            <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition">
-              PDF Processing System
-            </h3>
-
-            <p className="text-sm text-gray-400 leading-relaxed mb-4">
-              High-performance pipeline for processing large-scale PDF documents with efficiency and reliability.
-            </p>
-
-            <span className="text-xs text-gray-500">
-              Python · Automation · Backend
-            </span>
-          </div>
-
-          <div className="group border border-white/10 p-6 rounded-2xl hover:bg-white/5 transition">
-            <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition">
-              Workflow Automation Tool
-            </h3>
-
-            <p className="text-sm text-gray-400 leading-relaxed mb-4">
-              System designed to streamline admin workflows and reduce manual processes.
-            </p>
-
-            <span className="text-xs text-gray-500">
-              Next.js · Dataverse · Automation
-            </span>
-          </div>
-
-          <div className="group border border-white/10 p-6 rounded-2xl hover:bg-white/5 transition">
-            <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition">
-              Workflow Automation Tool
-            </h3>
-
-            <p className="text-sm text-gray-400 leading-relaxed mb-4">
-              System designed to streamline admin workflows and reduce manual processes.
-            </p>
-
-            <span className="text-xs text-gray-500">
-              Next.js · Dataverse · Automation
-            </span>
-          </div>
-
-          <div className="group border border-white/10 p-6 rounded-2xl hover:bg-white/5 transition">
-            <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition">
-              Workflow Automation Tool
-            </h3>
-
-            <p className="text-sm text-gray-400 leading-relaxed mb-4">
-              System designed to streamline admin workflows and reduce manual processes.
-            </p>
-
-            <span className="text-xs text-gray-500">
-              Next.js · Dataverse · Automation
-            </span>
-          </div>
-
-        </div>
-      </section>
-    )
+export default function ProjectsPage() {
+  return (
+    <main className="mx-auto max-w-5xl px-6 py-14">
+      <header className="mb-10 max-w-2xl">
+        <p className="text-sm font-medium uppercase tracking-[0.18em] text-primary">Selected work</p>
+        <h1 className="mt-2 text-4xl font-bold tracking-tight">Systems built around real constraints</h1>
+        <p className="mt-4 leading-relaxed text-foreground/60">A growing collection of projects in automation, document processing, AI workflows, and reliable web systems.</p>
+      </header>
+      <div className="grid gap-6 md:grid-cols-2">{projects.map((project) => <ProjectCard key={project.title} project={project} />)}</div>
+    </main>
+  )
 }

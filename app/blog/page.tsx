@@ -1,22 +1,26 @@
+import type { Metadata } from 'next'
 import BlogTabs from '@/components/BlogTabs'
 import { getPosts } from '@/lib/posts'
 
+export const metadata: Metadata = {
+  title: 'Build Logs',
+  description: 'Practical case studies and notes about automation, AI workflows, document processing, and software engineering.',
+  alternates: { canonical: '/blog' },
+  openGraph: {
+    title: 'Build Logs',
+    description: 'Practical case studies and notes about building reliable software systems.',
+    url: '/blog',
+  },
+}
+
 export default function BlogPage() {
-  const posts = getPosts()
-
   return (
-    <div className="py-8">
-
-      {/* HEADER */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Build Logs</h1>
-        <p className="text-gray-500 text-sm">
-          Thoughts, learnings, and things I’m building.
-        </p>
-      </div>
-
-      <BlogTabs posts={posts} />
-
-    </div>
+    <main className="mx-auto max-w-3xl px-6 py-14">
+      <header className="mb-8">
+        <h1 className="mb-3 text-4xl font-bold tracking-tight">Build Logs</h1>
+        <p className="text-foreground/60">Practical notes, architecture decisions, and lessons from things I’m building.</p>
+      </header>
+      <BlogTabs posts={getPosts()} />
+    </main>
   )
 }
