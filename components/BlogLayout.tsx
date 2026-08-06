@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import type { TBlogPost } from "@/lib/types"
 import { siteConfig } from "@/lib/site"
+import ReadingProgress from "@/components/ReadingProgress"
 
 type BlogLayoutProps = {
   post: TBlogPost
@@ -14,7 +15,8 @@ export default function BlogLayout({ post, relatedPosts, children }: BlogLayoutP
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-12">
-      <article>
+      <ReadingProgress />
+      <article id="blog-article">
         <header className="mb-10">
           <Link href="/blog" className="text-sm text-foreground/55 hover:text-foreground">← All build logs</Link>
           {post.tags.length > 0 && <ul className="mt-8 flex flex-wrap gap-2" aria-label="Post topics">{post.tags.map((tag) => <li key={tag} className="rounded-full border border-foreground/15 px-3 py-1 text-xs text-foreground/60">{tag}</li>)}</ul>}

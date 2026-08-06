@@ -1,7 +1,7 @@
 'use client';
 
 import { Copy, Check } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useMemo, useState } from 'react';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-typescript';
@@ -19,19 +19,16 @@ interface CodeBlockProps {
 
 export default function CodeBlock({ code, language = 'javascript', filename }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
-  const [highlightedCode, setHighlightedCode] = useState('');
-
-  useEffect(() => {
+  const highlightedCode = useMemo(() => {
     try {
-      const highlighted = Prism.highlight(
+      return Prism.highlight(
         code,
         Prism.languages[language] || Prism.languages.javascript,
         language
       );
-      setHighlightedCode(highlighted);
     } catch (error) {
       console.error('Syntax highlighting error:', error);
-      setHighlightedCode(code);
+      return '';
     }
   }, [code, language]);
 

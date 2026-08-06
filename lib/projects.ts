@@ -23,9 +23,9 @@ export const projects: Project[] = [
   {
     title: "Echoease",
     description:
-      "A document-processing system designed to handle large PDF workloads efficiently and reliably.",
+      "A booking marketplace where singers can build stronger portfolios and venue owners can discover and hire talent for live gigs.",
     outcome:
-      "Built around repeatable processing, clear failure handling, and scalable backend workflows.",
+      "Brings performer profiles, talent discovery, gig bookings, and payments into one streamlined platform for singers and venue owners.",
     stack: ["Django", "Next.js", "Backend"],
     image: "/images/echoease.png",
   },
