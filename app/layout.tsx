@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import { siteConfig } from "@/lib/site";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Geist, Geist_Mono, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 
@@ -74,6 +75,7 @@ export default function RootLayout({
           <div className="w-full flex-1">{children}</div>
           <Footer />
           <Analytics />
+          <SpeedInsights />
         </Providers>
       </body>
     </html>
