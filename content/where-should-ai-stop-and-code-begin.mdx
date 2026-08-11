@@ -1,0 +1,225 @@
+---
+title: "Where Should AI Stop and Ordinary Code Begin?"
+date: "2026-08-11"
+image: "/images/ai-code-handoff-hero.png"
+excerpt: "A practical way to decide which parts of a system need AI judgment and which parts should remain predictable, testable code."
+tags: ["AI", "Software Architecture", "Engineering"]
+published: true
+featured: true
+---
+
+AI can summarize documents, write emails, generate code, and make surprisingly useful suggestions.
+
+That makes it tempting to give AI an entire task and say, “You understand what I want. Just handle everything.”
+
+I tried something close to that.
+
+It worked often enough to make me confident—and failed often enough to make me nervous.
+
+The problem was not that the AI was useless. I had given it two very different responsibilities: making judgments and following exact rules.
+
+Imagine asking AI to read a customer complaint and decide whether the customer sounds unhappy. That is a reasonable use of AI because language can be ambiguous.
+
+Now imagine asking the same AI to calculate the exact refund, transfer the money, and update the customer’s balance. Suddenly, “probably correct” is not good enough.
+
+That is the boundary I had to learn:
+
+> **AI is useful when a task requires interpretation. Ordinary code is better when the result must be guaranteed.**
+
+## What Do I Mean by “Ordinary Code”?
+
+By ordinary code, I mean the predictable instructions developers have always written.
+
+If a customer has a balance of $100 and receives a $20 refund, ordinary code calculates the new balance as $120. It does not reconsider the meaning of addition, choose a more creative number, or have a particularly imaginative Tuesday.
+
+Given the same input and the same rules, it produces the same result.
+
+AI works differently. It is good at dealing with information that is unclear, inconsistent, or written in natural language. It can make a useful judgment even when there is no perfect rule for every situation.
+
+Neither approach is automatically better. They solve different kinds of problems.
+
+## Give AI Tasks That Require Judgment
+
+AI is most useful when the input cannot be described with a small set of exact rules.
+
+For example, AI can help with:
+
+* summarizing a long document
+* identifying the intention behind a message
+* extracting information from inconsistent text
+* categorizing support requests
+* finding patterns across different document layouts
+* suggesting possible answers or next steps
+
+Consider a support email that says:
+
+> “I have tried this three times, and it still does not work. I need this resolved today.”
+
+The customer never writes, “My emotional state is angry.” A traditional program would need rules based on specific words or phrases. AI can interpret the overall message and recognize urgency or frustration.
+
+That is judgment. There may not be one mathematically perfect answer, but a useful interpretation is possible.
+
+## Give Code Tasks That Require Guarantees
+
+Some parts of a system cannot be “mostly right.”
+
+Ordinary code should usually control tasks such as:
+
+* calculating prices, totals, or refunds
+* checking permissions
+* preventing duplicate bookings
+* validating required information
+* saving records to a database
+* enforcing business rules
+* transforming data into an exact format
+* sending or recording payments
+
+If two venue owners attempt to book the same singer for the same time, the platform needs a clear rule. It should not ask AI which booking “feels more correct.”
+
+The database and application code should enforce availability consistently.
+
+The same principle applies to permissions. AI might help explain why a user cannot access something, but it should not casually decide whether that user is an administrator.
+
+<Note>
+**A useful rule:** If an incorrect answer can affect money, security, legal information, or the integrity of your data, AI should not be the final authority.
+</Note>
+
+## How I Learned This While Building 1Pager
+
+I encountered this problem while building 1Pager, a system that converts legal PDF documents into a strict structured format required by other software.
+
+The documents came from more than 100 venues, and each venue followed different formatting rules. The input was inconsistent, but the final output had to be exact.
+
+At first, I tried to make the AI agent handle almost everything. It received global instructions, venue-specific rules, examples, and requirements for producing the final output.
+
+My early architecture was essentially:
+
+> “Here are more than 100 sets of rules. Good luck.”
+
+As the instructions grew, the results became less consistent. The AI had too much information and too many responsibilities. Sometimes it followed the correct venue rule. Sometimes it mixed instructions together. Sometimes it produced an output that looked convincing but was structurally wrong.
+
+Whenever something failed, my first instinct was to improve the prompt. I added another instruction, another example, or another warning.
+
+At some point, the prompt was beginning to look less like a prompt and more like an employee handbook.
+
+The real problem was not simply the wording. It was the architecture.
+
+I was asking AI to do two jobs:
+
+1. Interpret an inconsistent legal document
+2. Guarantee an exact technical output
+
+The first job was a good fit for AI. The second was better suited to ordinary code.
+
+## Moving the Boundary
+
+I redesigned the workflow so the agent received only the instructions and example for the relevant venue.
+
+The AI interpreted the document and produced a smaller, focused representation of the information. A Python program then transformed that result into the final XML format.
+
+The responsibility became clearer:
+
+```text
+Legal PDF and focused venue instructions
+                  ↓
+      AI interprets the document
+                  ↓
+     AI returns structured information
+                  ↓
+     Python validates and transforms it
+                  ↓
+            Final XML output
+```
+
+AI handled the uncertain part. Python handled the exact part.
+
+This did not remove AI from the system. It allowed AI to concentrate on the work it was actually good at.
+
+Python does not become creative when asked to produce XML. In this situation, that is a feature.
+
+I wrote more about the complete project in [How I Built 1Pager](/blog/how-i-built-1pager), but the important lesson is broader than document processing.
+
+## AI Can Assist Without Being in Control
+
+The choice is not always between “use AI” and “do not use AI.”
+
+AI can participate in a process without having final authority over it.
+
+For example:
+
+* AI extracts fields; code verifies that required fields are present.
+* AI recommends a category; a person approves sensitive cases.
+* AI drafts a reply; the user decides whether to send it.
+* AI identifies a possible duplicate; code checks exact identifiers.
+* AI suggests a booking option; code confirms actual availability.
+
+This is often more useful than trying to automate the entire decision.
+
+An AI assistant does not need permission to press every button just because it helped find the button.
+
+## Five Questions I Ask Now
+
+When deciding whether a responsibility belongs to AI or ordinary code, I ask five questions.
+
+### 1. Must the same input always produce the same result?
+
+If yes, ordinary code is usually the safer choice.
+
+A tax calculation, access check, or booking conflict should not change because the model responded differently today.
+
+### 2. Can I describe the rule exactly?
+
+If the rule can be written clearly as conditions, calculations, or validation steps, it probably does not need AI.
+
+“A booking cannot overlap another confirmed booking” is an exact rule. Code can enforce it.
+
+“Does this message sound urgent?” requires interpretation. AI may help.
+
+### 3. What happens when the answer is wrong?
+
+The consequences matter.
+
+If an incorrect summary causes a small inconvenience, AI output may be acceptable with a disclaimer. If an incorrect result sends money, exposes private information, or creates a legal document, validation and human review become much more important.
+
+### 4. Can the result be validated?
+
+AI becomes safer when its output passes through checks.
+
+Can the system verify the format? Can it confirm required fields? Can it reject impossible values? Can a person review uncertain cases?
+
+If there is no way to detect a wrong answer, the AI may have too much responsibility.
+
+### 5. Is AI adding real value here?
+
+Sometimes developers use AI because it is available, not because the task needs it.
+
+If ten lines of code can solve the problem reliably, adding a model may introduce cost, latency, and new failure cases without providing a meaningful benefit.
+
+Not every problem becomes smarter after an AI API call.
+
+## A Simple Decision Framework
+
+The boundary can be summarized like this:
+
+* **Inconsistent or natural-language input:** Start with AI.
+* **Interpretation or judgment:** Start with AI.
+* **The same input must always produce the same output:** Use ordinary code.
+* **A rule can be expressed exactly:** Use ordinary code.
+* **A mistake affects money, access, or critical data:** Use code, validation, and possibly human review.
+* **AI produces a result that can be checked:** Combine AI with ordinary code.
+
+This is not a perfect formula. It is a starting point for designing the responsibilities clearly.
+
+## The Boundary Is Part of the Product
+
+Users do not care which part of a system uses AI. They care whether the system is useful, understandable, and reliable.
+
+Sometimes the best AI feature is the one surrounded by ordinary code that catches its mistakes.
+
+The goal is not to maximize how much AI a product uses. The goal is to use AI where it creates value without giving up the guarantees the product needs.
+
+My first approach tried to make the AI responsible for the entire result. The better approach gave it a smaller, clearer job and allowed ordinary code to protect everything that had to be exact.
+
+That is the boundary I use now:
+
+> **Let AI make the judgment. Let code enforce the promise.**

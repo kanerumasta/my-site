@@ -11,6 +11,10 @@ import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-sql';
 
+// CodeBlock highlights its own source below. Prevent Prism from scanning and
+// mutating every MDX <pre> element before React has finished hydrating it.
+Prism.manual = true;
+
 interface CodeBlockProps {
   code: string;
   language?: string;
