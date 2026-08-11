@@ -5,7 +5,7 @@ const productionUrl = process.env.NEXT_PUBLIC_SITE_URL
 export const siteConfig = {
   name: "Mac Ibale",
   shortName: "Mac",
-  title: "Mac Ibale — Automation & AI Systems Developer",
+  title: "Mac Ibale — Software Engineer | Automation & AI Systems",
   description:
     "Practical notes and case studies about automation, AI workflows, document processing, and building reliable software systems.",
   url: productionUrl,

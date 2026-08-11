@@ -15,7 +15,7 @@ export default function Home() {
           I turn complicated workflows into systems that work smarter.
         </h1>
         <p className="mt-7 max-w-2xl text-lg leading-relaxed text-foreground/65 sm:text-xl">
-          I’m Mac, a developer building automation, document-processing pipelines, and modern web applications. I share the architecture, tradeoffs, and lessons behind the work.
+          I’m Mac, a software engineer building automation, document-processing pipelines, and modern web applications. I share the architecture, tradeoffs, and lessons behind the work.
         </p>
         <div className="mt-9 flex flex-wrap gap-3">
           <Link href="/blog" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90">Read the build logs</Link>
