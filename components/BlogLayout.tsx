@@ -3,6 +3,7 @@ import Link from "next/link"
 import type { TBlogPost } from "@/lib/types"
 import { siteConfig } from "@/lib/site"
 import ReadingProgress from "@/components/ReadingProgress"
+import NewsletterSignup from "@/components/NewsletterSignup"
 
 type BlogLayoutProps = {
   post: TBlogPost
@@ -34,7 +35,11 @@ export default function BlogLayout({ post, relatedPosts, children }: BlogLayoutP
         <div className="prose prose-lg max-w-none dark:prose-invert">{children}</div>
       </article>
 
-      <aside className="mt-16 rounded-2xl border border-primary/20 bg-primary/[0.05] p-7" aria-labelledby="article-cta">
+      <div className="mt-16">
+        <NewsletterSignup />
+      </div>
+
+      <aside className="mt-8 rounded-2xl border border-primary/20 bg-primary/[0.05] p-7" aria-labelledby="article-cta">
         <h2 id="article-cta" className="text-xl font-semibold">Building a workflow where the edge cases matter?</h2>
         <p className="mt-2 leading-relaxed text-foreground/65">I work on document automation, AI-assisted workflows, integrations, and internal tools.</p>
         <Link href="/services" className="mt-5 inline-block rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground">See how I can help</Link>

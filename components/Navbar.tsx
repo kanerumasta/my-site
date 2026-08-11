@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Github, Linkedin } from "lucide-react"
 import ThemeToggle from "./ThemeToggle"
 import { siteConfig } from "@/lib/site"
@@ -7,8 +8,16 @@ export default function Navbar() {
   return (
     <nav aria-label="Primary navigation" className="sticky top-0 z-30 w-full border-b border-foreground/10 bg-background/85 backdrop-blur">
       <div className="mx-auto flex h-15 max-w-5xl items-center justify-between px-6">
-        <Link href="/" className="font-bold text-primary" aria-label={`${siteConfig.name}, home`}>
-          {siteConfig.shortName}
+        <Link href="/" className="flex items-center gap-2 font-bold text-primary" aria-label={`${siteConfig.name}, home`}>
+          <Image
+            src="/mac-ibale-brand-logo.png"
+            width={32}
+            height={32}
+            alt=""
+            priority
+            className="rounded-md"
+          />
+          <span>{siteConfig.shortName}</span>
         </Link>
 
         <div className="flex items-center gap-1">

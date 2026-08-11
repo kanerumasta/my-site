@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import BlogTabs from '@/components/BlogTabs'
+import NewsletterSignup from '@/components/NewsletterSignup'
 import { getPosts } from '@/lib/posts'
 
 export const metadata: Metadata = {
@@ -21,6 +22,9 @@ export default function BlogPage() {
         <p className="text-foreground/60">Practical notes, architecture decisions, and lessons from things I’m building.</p>
       </header>
       <BlogTabs posts={getPosts()} />
+      <div className="mt-14">
+        <NewsletterSignup />
+      </div>
     </main>
   )
 }

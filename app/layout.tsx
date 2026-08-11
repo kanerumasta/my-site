@@ -33,6 +33,10 @@ export const metadata: Metadata = {
   applicationName: siteConfig.name,
   authors: [{ name: siteConfig.author, url: siteConfig.linkedIn }],
   creator: siteConfig.author,
+  icons: {
+    icon: [{ url: "/mac-ibale-brand-logo.png", type: "image/png" }],
+    apple: [{ url: "/mac-ibale-brand-logo.png", type: "image/png" }],
+  },
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
