@@ -16,7 +16,7 @@ export const projects: Project[] = [
     outcome:
       "Replaced one overloaded AI prompt with targeted venue configuration and a reliable Python transformation layer.",
     stack: ["Copilot Studio", "FastAPI", "Python", "Power Apps"],
-    image: "/images/1pager-hero.png",
+    image: "/images/1pager-hero-v2.png",
     href: "/blog/how-i-built-1pager",
     featured: true,
   },
