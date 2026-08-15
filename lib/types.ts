@@ -10,4 +10,6 @@ export type TBlogPost = {
   content: string
   featured: boolean
   readingTime: number
+  format: 'article' | 'note'
+  series?: string
 }

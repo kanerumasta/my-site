@@ -3,7 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 type BlogCardProps = {
-  post: Pick<TBlogPost, 'slug' | 'title' | 'date' | 'excerpt' | 'image' | 'tags' | 'readingTime'>
+  post: Pick<TBlogPost, 'slug' | 'title' | 'date' | 'excerpt' | 'image' | 'tags' | 'readingTime' | 'format' | 'series'>
 }
 
 export default function BlogCard({ post }: BlogCardProps) {
@@ -12,13 +12,15 @@ export default function BlogCard({ post }: BlogCardProps) {
   }).format(new Date(post.date))
 
   return (
-    <article className="border-b border-foreground/10 py-7">
+    <article className={`border-b border-foreground/10 py-7 ${post.format === 'note' ? 'rounded-2xl border border-primary/20 bg-primary/[0.035] px-5' : ''}`}>
       <Link href={`/blog/${post.slug}`} className="group grid gap-5 sm:grid-cols-[1fr_180px] sm:items-center">
         <div>
-          <div className="mb-3 flex items-center gap-2 text-sm text-foreground/50">
+          <div className="mb-3 flex flex-wrap items-center gap-2 text-sm text-foreground/50">
+            {post.format === 'note' && <span className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">Quick note</span>}
             <time dateTime={post.date}>{formattedDate}</time><span aria-hidden="true">·</span><span>{post.readingTime} min read</span>
           </div>
           <h2 className="text-xl font-semibold tracking-tight group-hover:text-primary md:text-2xl">{post.title}</h2>
+          {post.series && <p className="mt-2 text-xs font-medium uppercase tracking-wider text-primary">From the {post.series} series</p>}
           {post.excerpt && <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-foreground/65 md:text-base">{post.excerpt}</p>}
           {post.tags.length > 0 && <ul className="mt-4 flex flex-wrap gap-2" aria-label="Post topics">{post.tags.map((tag) => <li key={tag} className="text-xs text-foreground/50">#{tag}</li>)}</ul>}
         </div>

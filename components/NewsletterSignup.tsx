@@ -1,4 +1,4 @@
-export default function NewsletterSignup() {
+export default function NewsletterSignup({ afterArticle = false }: { afterArticle?: boolean }) {
   return (
     <section
       className="rounded-2xl border border-primary/25 bg-primary/[0.06] p-7 sm:p-8"
@@ -8,11 +8,12 @@ export default function NewsletterSignup() {
         Notes from the workbench
       </p>
       <h2 id="newsletter-heading" className="mt-2 text-2xl font-bold tracking-tight">
-        Useful ideas, delivered occasionally.
+        {afterArticle ? 'Enjoyed this? Get the next story.' : 'Useful ideas, delivered occasionally.'}
       </h2>
       <p className="mt-3 max-w-xl leading-relaxed text-foreground/65">
-        Get practical notes about software engineering, AI, and lessons from real projects. No spam,
-        just the things worth sharing.
+        {afterArticle
+          ? 'Get honest engineering stories and practical lessons in your inbox. No spam and no daily noise.'
+          : 'Get practical notes about software engineering, AI, and lessons from real projects. No spam, just the things worth sharing.'}
       </p>
 
       <form
