@@ -1,19 +1,36 @@
-export default function NewsletterSignup({ afterArticle = false }: { afterArticle?: boolean }) {
+type NewsletterSignupProps = {
+  afterArticle?: boolean
+  eyebrow?: string
+  heading?: string
+  description?: string
+  buttonLabel?: string
+}
+
+export default function NewsletterSignup({
+  afterArticle = false,
+  eyebrow,
+  heading,
+  description,
+  buttonLabel = "Subscribe",
+}: NewsletterSignupProps) {
+  const defaultHeading = afterArticle ? "Enjoyed this? Get the next story." : "Useful ideas, delivered occasionally."
+  const defaultDescription = afterArticle
+    ? "Get honest engineering stories and practical lessons in your inbox. No spam and no daily noise."
+    : "Get practical notes about software engineering, AI, and lessons from real projects. No spam, just the things worth sharing."
+
   return (
     <section
       className="rounded-2xl border border-primary/25 bg-primary/[0.06] p-7 sm:p-8"
       aria-labelledby="newsletter-heading"
     >
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-        Notes from the workbench
+        {eyebrow ?? "Notes from the workbench"}
       </p>
       <h2 id="newsletter-heading" className="mt-2 text-2xl font-bold tracking-tight">
-        {afterArticle ? 'Enjoyed this? Get the next story.' : 'Useful ideas, delivered occasionally.'}
+        {heading ?? defaultHeading}
       </h2>
       <p className="mt-3 max-w-xl leading-relaxed text-foreground/65">
-        {afterArticle
-          ? 'Get honest engineering stories and practical lessons in your inbox. No spam and no daily noise.'
-          : 'Get practical notes about software engineering, AI, and lessons from real projects. No spam, just the things worth sharing.'}
+        {description ?? defaultDescription}
       </p>
 
       <form
@@ -38,7 +55,7 @@ export default function NewsletterSignup({ afterArticle = false }: { afterArticl
           type="submit"
           className="rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
         >
-          Subscribe
+          {buttonLabel}
         </button>
       </form>
 

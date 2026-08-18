@@ -3,7 +3,7 @@ import { getPosts } from "@/lib/posts"
 import { absoluteUrl } from "@/lib/site"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ["", "/blog", "/projects", "/about", "/services"].map((path) => ({
+  const pages = ["", "/blog", "/books", "/books/before-you-automate-it", "/projects", "/about", "/services"].map((path) => ({
     url: absoluteUrl(path || "/"),
     lastModified: new Date(),
   }))

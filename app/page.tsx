@@ -1,6 +1,7 @@
 import Link from "next/link"
 import ProjectCard from "@/components/ProjectCard"
 import BlogCard from "@/components/BlogCard"
+import BookCover from "@/components/BookCover"
 import { getPosts } from "@/lib/posts"
 import { projects } from "@/lib/projects"
 
@@ -41,6 +42,22 @@ export default function Home() {
           <Link href="/blog" className="text-sm text-foreground/60 hover:text-foreground">All posts →</Link>
         </div>
         <div>{recentPosts.map((post) => <BlogCard key={post.slug} post={post} />)}</div>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-6 py-20" aria-labelledby="book-heading">
+        <div className="grid items-center gap-9 overflow-hidden rounded-3xl border border-foreground/10 bg-foreground/[0.025] p-7 sm:p-10 md:grid-cols-[1fr_13rem] md:gap-14">
+          <div>
+            <p className="text-sm font-medium uppercase tracking-[0.18em] text-primary">Forthcoming field guide</p>
+            <h2 id="book-heading" className="mt-3 max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl">Before You Automate It</h2>
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-foreground/65">
+              A practical book about finding the hidden rules, exceptions, spreadsheets, and human knowledge behind a workflow before choosing tools or writing code.
+            </p>
+            <Link href="/books/before-you-automate-it" className="mt-7 inline-block rounded-lg border border-primary/35 px-6 py-3 text-sm font-semibold text-primary hover:bg-primary/[0.07]">
+              Read the free excerpt →
+            </Link>
+          </div>
+          <BookCover compact className="mx-auto w-full max-w-[13rem]" />
+        </div>
       </section>
 
       <section className="mx-auto max-w-5xl px-6 py-20">

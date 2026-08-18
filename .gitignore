@@ -41,3 +41,6 @@ yarn-error.log*
 next-env.d.ts
 
 .env.local
+
+# private writing projects (keep unreleased manuscripts out of the site repository)
+/books/
