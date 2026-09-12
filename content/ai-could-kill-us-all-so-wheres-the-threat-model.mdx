@@ -1,11 +1,11 @@
 ---
-title: "AI Could Kill Us All. So Where’s the Threat Model?"
+title: "Yes, AI Could Kill Us All"
 date: "2026-09-12"
-excerpt: "An AI researcher’s warning went viral. Instead of choosing panic or dismissal, let’s ask what would have to fail—and what could stop it."
+image: "/images/ai-shatters-earth-hero.png"
+excerpt: "A viral warning says AI could end humanity. That is a possibility, not a prediction. Here is what would have to go wrong and what could stop it."
 tags: ["AI", "AI Safety", "Software Engineering"]
 published: true
 featured: true
-series: "Engineering in Practice"
 ---
 
 You ask an AI to help clean up a function.
@@ -16,274 +16,126 @@ Five minutes later, your news feed tells you that some people building the most 
 
 That is a difficult change of mood for one coffee break.
 
-The internet usually offers two reactions.
+The internet usually offers two reactions. You can panic and prepare for the machines, or you can point at today’s unreliable chatbots and laugh at the whole idea.
 
-The first is panic: the machines are coming, civilization is over, and perhaps it is time to apologize to the printer for everything you said about it.
+Neither reaction is very useful. The important word in that frightening headline is **could**. It describes a possibility, not a prediction.
 
-The second is dismissal: today’s chatbot still makes obvious mistakes, so every warning about future AI must be science fiction.
+Yes, AI could kill us all, but only if several uncertain conditions come together. Each one gives us a place to intervene. That is what threat modeling is for.
 
-Neither response helps very much.
-
-If a technology could cause catastrophic harm, the useful question is not only, “Do I believe it?” The useful questions are: What would have to happen? Which conditions would make it possible? Where could people interrupt the chain?
-
-In other words:
-
-> **Fear is not a safety plan. Neither is pretending the danger sounds too dramatic to examine.**
-
-What we need is a threat model.
-
-## First, What Actually Happened?
+## What Actually Happened?
 
 On September 8, 2026, pretraining researcher Jacob Coxon announced that he was resigning from Anthropic. He said he had spent roughly three years working across Anthropic and OpenAI.
 
-In his [resignation post](https://x.com/hilbertspaess/status/2097476196791709843), he warned that frontier AI companies were racing toward systems capable of improving AI research itself while taking risks that could affect everyone. His warning spread to more than 100 million people, according to the [Associated Press](https://apnews.com/article/anthropic-ai-safety-jacob-coxon-2ed549e07f2f941600a135070487d83d).
+In his [resignation post](https://x.com/hilbertspaess/status/2097476196791709843), Coxon warned that frontier AI companies were racing toward systems that could help improve future AI while taking risks that affect everyone. The post reached more than 100 million people, according to the [Associated Press](https://apnews.com/article/anthropic-ai-safety-jacob-coxon-2ed549e07f2f941600a135070487d83d).
 
-Then the headline became even more alarming.
+The specific number repeated in many headlines came from someone else. Evan Hubinger, Anthropic’s current Alignment Science Lead, said in a [public response](https://x.com/EvanHub/status/2097497037956891126) that his personal estimate of AI causing human extinction was greater than 10% within the next decade.
 
-Evan Hubinger, Anthropic’s current Alignment Science Lead, publicly agreed that a future AI system could cause human extinction. In a [response to Coxon](https://x.com/EvanHub/status/2097497037956891126), he placed his personal estimate above 10% within the next decade.
+That is an alarming opinion from someone close to the technology. It is not proof, and it is not Anthropic’s official forecast.
 
-That distinction matters.
+The concern is not about the chatbot open in your browser today. It is about possible future systems that are far more capable, can work with little supervision, and might help create even more powerful successors.
 
-Coxon warned about a possibility. Hubinger supplied the number. Neither demonstrated that extinction is certain, and neither said that the chatbot open in your browser today is secretly preparing a hostile takeover between summary requests.
+In this discussion, **autonomous AI** means a system that can plan and use tools without approval at every step. **Alignment** means keeping its behavior consistent with human intentions, even in unfamiliar situations.
 
-The concern is about much more capable future systems—especially systems that could operate autonomously, accelerate the development of their successors, and behave in ways their creators cannot reliably control.
+Hubinger later [clarified](https://x.com/EvanHub/status/2097528891846074828) that he considers the danger from present models low. Anthropic’s [August 2026 Risk Report](https://www-cdn.anthropic.com/f61d49fa5596956a5dec75fea0e973bf6a6a8378/Redacted%20Risk%20Report%20August%202026%20.pdf) reaches a similar conclusion about its current systems while describing uncertainty about what comes next. Current AI can already cause real harm, but the extreme loss-of-control warning is about where the technology could go.
 
-Three terms help make the discussion less mysterious:
+## A Percentage Is Not a Forecast
 
-* **Autonomous AI** can complete multiple steps, use tools, and take actions with limited supervision.
-* **Self-improving AI** would meaningfully accelerate the creation of more capable AI systems, potentially compressing years of research into a much shorter period.
-* **Alignment** means keeping a system’s behavior consistent with human intentions and values, including in unfamiliar situations where its instructions are incomplete.
+In AI discussions, a personal estimate of catastrophic risk is sometimes called “p(doom).” It sounds precise, but the assumptions behind it are anything but precise.
 
-Hubinger later [clarified](https://x.com/EvanHub/status/2097528891846074828) that he considers danger from present models low. Anthropic’s own [August 2026 Risk Report](https://www-cdn.anthropic.com/f61d49fa5596956a5dec75fea0e973bf6a6a8378/Redacted%20Risk%20Report%20August%202026%20.pdf) also rates the covered current-model risks as low while acknowledging uncertainty and incomplete safeguards for more advanced capabilities.
+A weather forecast uses repeated observations and models tested against actual weather. Humanity has never built a superintelligence. There are no previous attempts we can study to calculate how often one ended well.
 
-<Note>
-**The responsible distinction:** Today’s AI can already cause real harm, but it does not currently have the capabilities required for the extreme loss-of-control scenario being discussed. The warning is about where the technology could go, not proof of where it is now.
-</Note>
+An estimate depends on uncertain questions about capability growth, faster AI research, harmful behavior, access, and the strength of future safeguards.
 
-## A 10% Estimate Is Not a Weather Forecast
+Change one assumption and the number changes too.
 
-In AI discussions, a personal estimate of catastrophic risk is sometimes called “p(doom).” The name is compact. The uncertainty behind it is not.
+That does not make Hubinger’s estimate meaningless. It tells us that a knowledgeable person considers the risk serious. But it is a judgment, not a measured failure rate or a countdown clock above the planet.
 
-A weather forecast can draw from repeated observations, physical measurements, historical patterns, and models tested against what actually happened.
+A [survey of 2,778 published AI researchers](https://arxiv.org/abs/2401.02843) found a wide range of opinions. Most respondents thought good outcomes from advanced AI were more likely than bad ones, while many still gave a meaningful probability to extremely bad outcomes.
 
-Humanity has never built a superintelligence before. There is no table containing the results of the previous 500 attempts. Nobody can look up how often civilization recovered after losing control of one.
+Experts do not agree that disaster is coming. They do not agree that it is impossible either. Uncertainty is evidence of neither catastrophe nor safety.
 
-An estimate such as 10% combines many judgments:
+## What Would Have to Go Wrong?
 
-* Will systems become dramatically more capable?
-* How soon might that happen?
-* Can AI substantially accelerate AI research?
-* Would a powerful system develop harmful behavior?
-* Would people give it enough access to matter?
-* Would technical and political safeguards fail?
+A threat model is a structured way to think about how something valuable could be harmed.
 
-Change one assumption and the final number can change significantly.
+Think about fire safety. You do not predict the exact date of a fire before installing an alarm. You ask what could start it, how it could spread, who would notice, and which protections would still work under pressure.
 
-That does not make the estimate meaningless. It communicates that a knowledgeable person considers the risk serious. But it is not a measured failure rate, an official prediction from Anthropic, or a countdown clock mounted above the planet.
-
-A [survey of 2,778 published AI researchers](https://arxiv.org/abs/2401.02843) found exactly this mixture of hope and concern. Most respondents thought good outcomes from advanced AI were more likely than bad ones, yet many still assigned a meaningful probability to outcomes as severe as human extinction. The answers varied widely.
-
-The honest conclusion is not that experts agree disaster is coming.
-
-It is that experts do not agree—and some of the people closest to the technology believe the downside is too severe to ignore.
-
-> **Uncertainty is not proof that catastrophe is coming. It is also not proof that everything will be fine.**
-
-## Start With a Threat Model, Not a Movie
-
-A threat model is simply a structured way to think about how something valuable could be harmed.
-
-Consider fire safety. You do not need to predict the exact date and time of a fire before installing an alarm. You ask what could start one, how it might spread, who would notice, which exits would remain available, and what could limit the damage.
-
-For an extreme AI loss-of-control scenario, a simplified chain might look like this:
+For a severe AI loss-of-control scenario, these conditions would need to come together:
 
 ```text
-Capability → Autonomy → Access → Opportunity → Failed Oversight
+Capability + Harmful Behavior + Autonomy + Access + Failed Oversight
 ```
 
-This is not an equation for predicting the future. It is a way to make a frightening claim inspectable.
+This is not an equation or a prediction. It is a way to make a frightening possibility easier to inspect.
 
-* **Capability:** The system can reason, plan, persuade, write software, discover vulnerabilities, or perform research at a very high level.
-* **Autonomy:** It can pursue a goal across many steps without waiting for a person to approve each one.
-* **Access:** It can reach tools, networks, money, infrastructure, sensitive information, or other systems.
-* **Opportunity:** It has enough time and freedom to retry, adapt, hide mistakes, or exploit weaknesses.
-* **Failed oversight:** Monitoring misses the behavior, people cannot understand it quickly enough, or nobody has the authority and ability to stop it.
+* **Capability:** The system can reason, plan, persuade, write software, or perform research at a very high level.
+* **Harmful behavior:** The system pursues a dangerous objective, or a person deliberately uses its abilities to cause harm.
+* **Autonomy:** It can pursue a goal across many steps without waiting for a person.
+* **Access:** It can reach tools, networks, money, infrastructure, or sensitive information.
+* **Failed oversight:** People do not detect the behavior early enough, cannot understand it, or cannot stop it.
 
-Remove enough links and the scenario changes.
+Remove enough links and the risk changes. A brilliant system with no ability to act is different from one holding production credentials. An agent inside a strong sandbox is different from one connected to financial accounts and critical infrastructure.
 
-A brilliant system with no ability to act is different from one holding production credentials. An autonomous system inside a strong sandbox is different from one connected to financial accounts and critical infrastructure. A dangerous action detected early is different from one discovered after it has spread.
+The system would not need anger, consciousness, or a glowing red eye. It would not need a villain speech if somebody had already given it administrator access.
 
-The system does not need consciousness, anger, or a glowing red eye.
+The conditions could come together in several ways. A person could deliberately use AI to scale harmful activity. An autonomous system could successfully pursue a badly specified objective. AI could speed up the development of its successors faster than people can evaluate them. Many important organizations could depend on similar systems, allowing one failure to spread.
 
-It does not need a villain monologue if somebody has already given it administrator access.
+Competitive pressure adds another problem. Every company can tell itself that slowing down only gives a less responsible competitor the advantage. Each decision may appear reasonable on its own while everyone moves toward a risk none of them would choose together.
 
-## How Could the Chain Form?
+For this to become an extinction-level event, the failure would have to spread beyond one product and reach critical infrastructure, dangerous research, global communications, or future AI development. It would also need to outrun containment by companies and governments. Current systems cannot do this.
 
-There is no single accepted extinction story. Several kinds of failure are discussed, and they should not be treated as equally likely or already proven.
+The [International AI Safety Report 2026](https://internationalaisafetyreport.org/sites/default/files/2026-02/international-ai-safety-report-2026_1.pdf) says today’s systems lack the combined abilities required for loss of control. It also reports progress in relevant areas such as autonomous operation, longer-term planning, tool use, and finding loopholes in evaluations. Experts disagree about whether these abilities will ever become dangerous enough.
 
-### Deliberate misuse
+None of this proves extinction will happen. It shows why the concern is taken seriously and where safeguards could break the chain. At the same time, we should not let a possible future apocalypse distract us from harms already happening through fraud, deepfakes, insecure code, privacy failures, and harmful automated decisions.
 
-A person or organization could use a highly capable system to scale cyberattacks, biological threats, manipulation, or other harmful activity. In this case, the AI does not need its own secret objective. A human provides one.
+## What Responsible Engineering Looks Like
 
-### The wrong objective, pursued successfully
+An application engineer cannot solve civilization-level AI governance in a pull request. You can still decide how much authority the AI inside your own system receives.
 
-An autonomous system could optimize a badly specified goal in ways its designers did not intend. The danger would not come from the system “hating” people. It would come from it treating human intervention as an obstacle to completing the objective it was given.
+The threat model gives us four practical places to begin:
 
-### AI accelerating AI development
+* **Limit capability and access.** Use only the model and tools the task needs. If an assistant only needs one folder, do not give it the entire drive. Keep credentials isolated and permissions narrow.
+* **Limit autonomy.** Let AI suggest a database change, then let predictable code validate it. Require human approval before moving money, deleting data, changing permissions, or affecting real people.
+* **Reduce opportunity.** Use sandboxes, test data, restricted networks, spending caps, timeouts, and limits on retries. “Keep trying until it works” can become expensive surprisingly quickly.
+* **Strengthen oversight.** Record tool calls, important decisions, and failures. Test malicious instructions and unusual inputs. Make sure people can stop the system and practice recovery before they need it.
 
-Future systems could automate more of the research and engineering required to build their successors. If capabilities improve faster than evaluation and safety work, people may have less time to understand each generation before the next one arrives.
-
-### Cascading dependence
-
-Companies, governments, financial systems, and infrastructure could rely on similar models or interconnected agents. One failure pattern might then travel much further than a bug inside an isolated application.
-
-### The race itself
-
-Every company may believe that slowing down only allows a less responsible competitor to win. Each participant can make a decision that appears rational on its own while the group moves toward a level of risk none of them would choose together.
-
-None of these pathways proves that extinction will happen. They explain why serious researchers do not consider catastrophic outcomes physically impossible.
-
-They also should not distract us from harms that already exist: fraud, deepfakes, insecure generated code, discrimination, privacy violations, labor disruption, and power becoming concentrated in fewer hands.
-
-We should not become so fascinated by a possible future apocalypse that we step over the damage happening in the present.
-
-## What Do We Know—and What Are We Guessing?
-
-The [International AI Safety Report 2026](https://internationalaisafetyreport.org/sites/default/files/2026-02/international-ai-safety-report-2026_1.pdf) offers a useful middle ground.
-
-It says current systems do not possess the collection of capabilities needed to cause a loss of human control. It also reports progress in relevant areas such as autonomous operation, longer-term planning, tool use, recognizing evaluations, and finding loopholes in tests.
-
-The report describes three broad conditions for loss of control: sufficient capabilities, a harmful propensity to use them, and a deployment environment that provides access and opportunity. Experts disagree sharply about whether those conditions will ever appear together.
-
-So we know some things:
-
-* AI systems are becoming more capable and more able to use tools.
-* Their behavior can remain difficult to predict in unfamiliar situations.
-* Autonomy and real-world permissions increase the possible blast radius—the amount of damage a failure can reach.
-* Competitive pressure can reward speed even when caution would benefit everyone.
-
-We do not know other crucial things:
-
-* Whether or when superintelligence will exist.
-* Whether rapid self-improvement is technically achievable.
-* Whether a future system would develop persistent harmful goals.
-* Whether monitoring and alignment research will fall behind or improve fast enough.
-* Whether governments and companies will coordinate before a crisis forces them to.
-
-Anyone promising certainty in either direction is selling confidence that the evidence does not provide.
-
-## Asking for the Mechanism Is Not Denial
-
-When someone warns about an extreme risk, asking “How?” can sound dismissive.
-
-It should be the opposite.
-
-A clear mechanism turns fear into questions that can be tested:
-
-* Which capability would change the level of concern?
-* What evidence would raise or lower the estimated risk?
-* Which safeguard interrupts each failure path?
-* How do we know that safeguard works under pressure?
-* Who can delay or stop deployment when evidence becomes worrying?
-
-Ordinary engineering already works this way. Buildings have fire exits even though most never burn. Aircraft use redundant systems without assuming every flight will fail. High-severity risks can justify protection even when their probability is uncertain.
-
-But vague warnings alone can produce anxiety rather than action.
-
-> **If the blast radius is civilization, “we’ll monitor production” is not a rollback strategy.**
-
-## What Engineers Can Do Today
-
-An application engineer cannot solve civilization-level AI governance in a pull request.
-
-You can still decide how much authority the AI inside your system receives.
-
-### Give it the minimum access it needs
-
-If an assistant only needs to read one folder, do not give it the entire drive. If it drafts a payment description, it does not also need permission to send the payment.
-
-This is the principle of least privilege: access should be narrow, temporary where possible, and tied to a specific task.
-
-### Separate proposing from executing
-
-Let AI suggest a database change. Let predictable code validate it. Require human approval before actions that move money, delete information, publish content, change permissions, or affect real people.
-
-In [Where Should AI Stop and Ordinary Code Begin?](/blog/where-should-ai-stop-and-code-begin), I argued that AI should handle interpretation while ordinary code protects exact rules. That boundary is not only clean architecture. It limits what an uncertain system is allowed to decide.
+In [Where Should AI Stop and Ordinary Code Begin?](/blog/where-should-ai-stop-and-code-begin), I argued that AI should handle interpretation while ordinary code protects exact rules. That boundary also limits what an uncertain system can decide.
 
 > **Let AI propose. Let ordinary code constrain. Let humans approve what cannot be easily undone.**
 
-### Build walls around experiments
+A kill switch alone is not enough. It only helps when people can reach it, have permission to use it, and understand what happens afterward.
 
-Use sandboxes, isolated credentials, restricted networks, test data, and separate environments. Assume the model will eventually produce a surprising action, then make sure surprise cannot immediately become an incident.
+These controls will not solve every frontier AI risk. They do prevent us from repeating the same dangerous pattern in our own products: adding capability, autonomy, and access without adding oversight.
 
-### Limit time, money, and retries
+## This Cannot Sit Only With Engineers
 
-An autonomous process should have rate limits, spending limits, execution deadlines, and a maximum number of attempts. “Keep trying until it works” is convenient until the system’s definition of “works” becomes expensive.
+Technical safeguards matter, but engineers work inside companies, markets, and laws.
 
-### Make behavior observable
+Companies need staged releases, independent safety reviews, honest incident reporting, and protected ways for employees to raise concerns. Someone must have clear authority to delay a launch. If everyone can identify a serious problem but nobody can stop the release, the organization has feedback without control.
 
-Record tool calls, permission changes, important decisions, and failures. Monitoring should alert people while intervention is still useful, not produce an elegant report the following morning.
+Frontier AI laboratories have wider responsibilities because they create the underlying models. Their safety requirements should become stronger as capabilities grow. Anthropic describes this approach in its [Responsible Scaling Policy](https://www.anthropic.com/responsible-scaling-policy).
 
-### Test the uncomfortable cases
-
-Evaluate more than the happy path. Try malicious instructions, unusual inputs, unavailable tools, conflicting goals, and attempts to escape the intended workflow. Independent reviewers should test assumptions the original team has become too familiar to notice.
-
-### Make stopping and recovery real
-
-A kill switch is not magic. It only helps if people can reach it, have permission to use it, and know what happens afterward. Practice rollback and recovery before the emergency—not during the part where everyone is typing in capital letters.
-
-These controls do not solve every frontier-AI risk. They are how engineers avoid recreating the same dangerous pattern at application scale: increasing capability, autonomy, and access without increasing oversight.
-
-## Safety Must Exist Above the Code
-
-Technical safeguards matter, but engineers operate inside organizations, markets, and laws.
-
-Companies need staged deployments, independent safety reviews, honest incident reporting, protected channels for employees who raise concerns, and clear stop-work authority. If everyone can identify a serious risk but nobody can delay a launch, the organization has feedback without control.
-
-Frontier laboratories carry broader responsibilities. Their evaluations should trigger stronger protections as model capabilities grow. Anthropic describes this idea in its [Responsible Scaling Policy](https://www.anthropic.com/responsible-scaling-policy), although its risk reports also show how difficult it is to turn every planned safeguard into reliable practice.
-
-Governments and independent institutions have work too: shared evaluation standards, external audits, reporting requirements for major incidents, whistleblower protection, and rules proportional to a system’s capabilities and potential harm.
-
-The [NIST Generative AI Risk Management Profile](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence) provides one practical framework for identifying, measuring, documenting, and managing AI risks across a system’s lifecycle.
+Governments and independent institutions also have a role. External audits, shared testing standards, major-incident reporting, and whistleblower protections cannot be implemented by one development team. The [NIST Generative AI Risk Management Profile](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence) offers organizations a practical starting point for managing AI risks throughout a system’s life.
 
 The public does not need to understand every model architecture to ask whether powerful systems are being tested by anyone other than the people competing to release them.
 
-## What Should a Reasonable Person Believe?
-
-You do not need to join a “doom” camp or a “hype” camp.
-
-You can hold several ideas at once:
-
-* Current chatbots are not superintelligent.
-* Current AI is already useful and already capable of harm.
-* Extreme future scenarios remain uncertain.
-* Credible warnings deserve mechanisms and evidence, not ridicule.
-* Severe possible consequences justify safeguards before certainty arrives.
-* Your opinion should change when the evidence changes.
-
-When somebody introduces a powerful AI system, ask questions that survive both optimism and fear:
-
-1. What can this system access?
-2. What can it do without approval?
-3. Can its actions be reversed?
-4. Who notices unexpected behavior?
-5. Who is authorized to stop it?
-6. What happens if several safeguards fail together?
-
-Those questions are useful whether the possible failure affects one customer, one company, or everyone.
-
 ## Safety Is Not a Prediction Contest
 
-The future may not be decided by whether an AI wakes up one morning and decides it dislikes humanity.
+Before believing a frightening headline or a corporate promise, ask simpler questions:
 
-It may be shaped by ordinary choices: one additional permission, one skipped evaluation, one company afraid to slow down, and one system that nobody is prepared to stop.
+1. What can this system access and do without approval?
+2. Can its actions be reversed?
+3. Who notices unexpected behavior, and who can stop it?
+4. What happens if several safeguards fail together?
 
-That is why AI safety should not become a contest to predict the apocalypse correctly.
+So, will AI kill us all?
 
-The goal is not to win an argument about whether the chance is 1%, 10%, or 50%. The goal is to make sure uncertainty never becomes permission to build carelessly.
+We do not have evidence that lets us honestly say it will. Today’s systems cannot produce the extreme scenario in the headlines, and predictions about future systems are still predictions. **Could** does not mean **will**.
 
-We do not install brakes because we are certain a car will crash. We install them because speed without control is an unacceptable design.
+That is not a reason to ignore the warning. A possible disaster does not have to be certain before sensible precautions become worthwhile. AI safety is not a contest to guess whether the risk is 1%, 10%, or 50%. It is the work of making sure uncertainty never becomes permission to build carelessly.
 
-You do not need to believe in Skynet to insist that powerful systems have brakes.
+The future may be shaped by ordinary choices: one extra permission, one skipped evaluation, one company afraid to slow down, and one system nobody is prepared to stop.
 
-And when the people building the engine are publicly asking how strong those brakes really are, the rest of us are allowed to ask too.
+We install brakes not because we are certain a car will crash, but because speed without control is a bad design.
+
+AI may never become the threat these researchers fear. If careful engineering and serious oversight help keep it that way, the warnings were not pointless. It may simply mean the brakes worked.

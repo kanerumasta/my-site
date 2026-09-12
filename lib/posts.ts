@@ -62,7 +62,6 @@ export function getPosts(): TBlogPost[] {
       content,
       readingTime: readingTime(content),
       format: (data.format === 'note' ? 'note' : 'article') as TBlogPost['format'],
-      series: typeof data.series === 'string' ? data.series.trim() : undefined,
     }
   })
 

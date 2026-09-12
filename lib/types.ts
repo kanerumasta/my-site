@@ -11,5 +11,4 @@ export type TBlogPost = {
   featured: boolean
   readingTime: number
   format: 'article' | 'note'
-  series?: string
 }

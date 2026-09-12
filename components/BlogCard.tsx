@@ -3,7 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 type BlogCardProps = {
-  post: Pick<TBlogPost, 'slug' | 'title' | 'date' | 'excerpt' | 'image' | 'tags' | 'readingTime' | 'format' | 'series'>
+  post: Pick<TBlogPost, 'slug' | 'title' | 'date' | 'excerpt' | 'image' | 'tags' | 'readingTime' | 'format'>
 }
 
 export default function BlogCard({ post }: BlogCardProps) {
@@ -20,7 +20,6 @@ export default function BlogCard({ post }: BlogCardProps) {
             <time dateTime={post.date}>{formattedDate}</time><span aria-hidden="true">·</span><span>{post.readingTime} min read</span>
           </div>
           <h2 className="text-xl font-semibold tracking-tight group-hover:text-primary md:text-2xl">{post.title}</h2>
-          {post.series && <p className="mt-2 text-xs font-medium uppercase tracking-wider text-primary">From the {post.series} series</p>}
           {post.excerpt && <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-foreground/65 md:text-base">{post.excerpt}</p>}
           {post.tags.length > 0 && <ul className="mt-4 flex flex-wrap gap-2" aria-label="Post topics">{post.tags.map((tag) => <li key={tag} className="text-xs text-foreground/50">#{tag}</li>)}</ul>}
         </div>

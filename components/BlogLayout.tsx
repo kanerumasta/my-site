@@ -29,8 +29,7 @@ export default function BlogLayout({ post, relatedPosts, children }: BlogLayoutP
       <article id="blog-article">
         <header className="mb-10">
           <Link href="/blog" className="text-sm text-foreground/55 hover:text-foreground">← All build logs</Link>
-          {post.series && <p className="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-primary">{post.series} series</p>}
-          {post.tags.length > 0 && <ul className={`${post.series ? 'mt-3' : 'mt-8'} flex flex-wrap gap-2`} aria-label="Post topics">{post.tags.map((tag) => <li key={tag} className="rounded-full border border-foreground/15 px-3 py-1 text-xs text-foreground/60">{tag}</li>)}</ul>}
+          {post.tags.length > 0 && <ul className="mt-8 flex flex-wrap gap-2" aria-label="Post topics">{post.tags.map((tag) => <li key={tag} className="rounded-full border border-foreground/15 px-3 py-1 text-xs text-foreground/60">{tag}</li>)}</ul>}
           <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">{post.title}</h1>
           <p className="mt-4 text-xl leading-relaxed text-foreground/60">{post.excerpt}</p>
           <div className="mt-5 flex flex-wrap items-center gap-2 text-sm text-foreground/50">
