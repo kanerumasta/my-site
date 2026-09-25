@@ -12,6 +12,7 @@ interface BlogImageProps {
 }
 
 export function BlogImage({ src, alt, caption, width = 800, height = 400 }: BlogImageProps) {
+  const isSvg = src.toLowerCase().split('?')[0].endsWith('.svg');
   const [isLoading, setIsLoading] = useState(true);
 
   return (
@@ -22,10 +23,12 @@ export function BlogImage({ src, alt, caption, width = 800, height = 400 }: Blog
           alt={alt}
           width={width}
           height={height}
+          unoptimized={isSvg}
           className={`w-full h-auto transition-opacity duration-300 ${
-            isLoading ? 'opacity-0' : 'opacity-100'
+            isSvg || !isLoading ? 'opacity-100' : 'opacity-0'
           }`}
           onLoad={() => setIsLoading(false)}
+          onError={() => setIsLoading(false)}
           priority={false}
         />
       </div>

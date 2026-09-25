@@ -17,8 +17,12 @@ type BlogLayoutProps = {
 export default function BlogLayout({ post, relatedPosts, children }: BlogLayoutProps) {
   const date = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(post.date))
   const articleUrl = `${siteConfig.url}/blog/${post.slug}`
-  const prompt = post.tags.includes('AI')
-    ? 'Where do you draw the line between AI judgment and predictable code?'
+  const prompt = post.tags.includes('AI') && post.tags.includes('Design Patterns')
+    ? 'When AI writes the code, who is responsible for the design?'
+    : post.tags.includes('AI')
+      ? 'Where do you draw the line between AI judgment and predictable code?'
+    : post.tags.includes('Design Patterns') || post.tags.includes('Software Design')
+      ? 'Which “small change” exposed the hidden shape of a system you worked on?'
     : post.tags.includes('Work') || post.tags.includes('Enterprise')
       ? 'What helps you do your best work when the environment feels restrictive?'
       : 'What is one lesson from your own work that you would add?'

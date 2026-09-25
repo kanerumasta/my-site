@@ -1,0 +1,96 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.dotField,
+.dotField::before,
+.dotField::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+}
+
+.dotField {
+  z-index: -1;
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--foreground) 24%, transparent) 1px,
+    transparent 1.35px
+  );
+  background-position: 12px 8px;
+  background-size: 24px 24px;
+  opacity: 0.56;
+  -webkit-mask-image: radial-gradient(
+    ellipse 74% 78% at 79% 43%,
+    #000 0%,
+    rgb(0 0 0 / 0.88) 42%,
+    transparent 82%
+  );
+  mask-image: radial-gradient(
+    ellipse 74% 78% at 79% 43%,
+    #000 0%,
+    rgb(0 0 0 / 0.88) 42%,
+    transparent 82%
+  );
+}
+
+.dotField::before {
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--primary) 92%, transparent) 1.35px,
+    transparent 1.7px
+  );
+  background-position: 12px 8px;
+  background-size: 24px 24px;
+  opacity: 0.9;
+  -webkit-mask-image: radial-gradient(
+    ellipse 32% 68% at 92% 48%,
+    #000 0%,
+    rgb(0 0 0 / 0.84) 38%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 32% 68% at 92% 48%,
+    #000 0%,
+    rgb(0 0 0 / 0.84) 38%,
+    transparent 100%
+  );
+}
+
+.dotField::after {
+  background: radial-gradient(
+    ellipse 34% 58% at 92% 47%,
+    color-mix(in srgb, var(--primary) 9%, transparent),
+    transparent 72%
+  );
+}
+
+:global(.dark) .dotField {
+  opacity: 0.7;
+}
+
+@media (max-width: 640px) {
+  .dotField {
+    background-size: 22px 22px;
+    -webkit-mask-image: linear-gradient(to bottom, #000, transparent 78%);
+    mask-image: linear-gradient(to bottom, #000, transparent 78%);
+    opacity: 0.38;
+  }
+
+  .dotField::before {
+    background-size: 22px 22px;
+    -webkit-mask-image: radial-gradient(
+      ellipse 58% 48% at 96% 22%,
+      #000,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 58% 48% at 96% 22%,
+      #000,
+      transparent 100%
+    );
+  }
+}
