@@ -1,0 +1,70 @@
+---
+title: 'I Thought XML Was Old. Legal Tech Hadn’t Moved On'
+date: '2026-10-09'
+image: '/images/xml-in-legal-documents.svg'
+excerpt: 'I barely learned XML at university. Then I started working with legal documents and found it quietly carrying real work.'
+tags: ['XML', 'Legal Tech', 'Data Formats', 'Software Engineering']
+published: true
+featured: false
+---
+
+I thought XML was one of those things I had already learned—and mostly left behind.
+
+At university, we covered the basics. A few tags, a little structure. In the projects I remember, JSON was usually the format we reached for.
+
+Then I started working around legal documents.
+
+Suddenly, XML was everywhere.
+
+Not because anyone was trying to bring back an old technology. In the work I saw, XML was already built into how legal documents were structured, exchanged, and processed. I had learned enough XML to recognize the angle brackets, but not enough to understand why it had stuck around.
+
+## So, What Is XML?
+
+XML stands for **Extensible Markup Language**. It is a way to describe information using tags that give data a visible structure.
+
+Imagine a judgment represented like this:
+
+```xml
+<judgment>
+  <case-number>2026-001</case-number>
+  <decision>Appeal dismissed</decision>
+</judgment>
+```
+
+The tags tell a system that this value is a case number and that one is a decision. The document is still text, but its parts have names and relationships that software can inspect.
+
+Real legal-document formats are much richer than this tiny example. They can describe sections, paragraphs, references, dates, parties, and other details in a consistent way.
+
+## Why Does Legal Work Use It?
+
+Legal documents are not just blobs of text. Their structure matters. A heading is different from a paragraph. A paragraph may need a stable identifier. A reference may point to another part of a law or another document.
+
+XML makes that structure explicit. With agreed vocabularies and validation rules, different systems can exchange documents and check whether they follow the expected shape.
+
+For example, [Akoma Ntoso](https://www.oasis-open.org/standard/akn-v1-0/) is an OASIS standard that defines an XML vocabulary for parliamentary, legislative, and judicial documents. It gives institutions a shared way to represent document structure and metadata.
+
+That does not mean every legal system uses the same XML format. It means XML can be a foundation for formats designed around the needs of a particular domain.
+
+## A Very Short History
+
+XML did not appear out of nowhere. It grew from **SGML**, an earlier markup standard used for complex documents and publishing.
+
+The W3C formed an XML working group in 1996, and [XML 1.0 became a W3C Recommendation on February 10, 1998](https://www.w3.org/press-releases/1998/xml10-rec/). The goal was to make structured documents easier to use and exchange on the web while keeping the flexibility that made markup useful.
+
+So yes, XML is older than many of the tools we use every day. But old does not automatically mean irrelevant.
+
+## XML Didn’t Disappear. I Just Stopped Looking.
+
+JSON is concise and convenient for many web APIs. XML can be more verbose. If all you need is a small object moving between two services, XML may not be the simplest choice.
+
+But in document-heavy work, explicit structure, validation, references, and established standards can matter more than terseness. Once organizations, tools, and processes depend on a format, replacing it is not just a matter of picking the newer-looking option.
+
+I thought XML was a basic topic from class. Work showed me it was also part of the infrastructure behind documents people rely on.
+
+Maybe that is the lesson: the technologies we hear about most are not always the ones doing the most important work.
+
+XML is old. No argument there.
+
+But companies still earn millions building products and services around legal-document workflows—and XML can be part of the machinery underneath. It helps systems keep documents structured and moving between tools.
+
+XML may be old. The business around keeping it useful is very much alive.

@@ -1,0 +1,40 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='700' viewBox='0 0 1200 700' fill='none'>
+  <rect width='1200' height='700' rx='28' fill='#F5F1E8'/>
+  <circle cx='1010' cy='110' r='126' fill='#E8E1D4' opacity='.55'/>
+  <g transform='translate(145 84) rotate(-3 300 260)'>
+    <rect x='14' y='16' width='575' height='530' rx='15' fill='#182B3A' opacity='.13'/>
+    <rect width='575' height='530' rx='15' fill='#FFFEFB' stroke='#D6D0C5' stroke-width='2'/>
+    <rect x='48' y='52' width='76' height='8' rx='4' fill='#D7E7E3'/>
+    <rect x='48' y='92' width='370' height='18' rx='4' fill='#25394A'/>
+    <rect x='48' y='132' width='454' height='7' rx='3.5' fill='#C9C7C0'/>
+    <rect x='40' y='188' width='492' height='235' rx='10' fill='#F2F6F4' stroke='#CADBD6' stroke-width='2'/>
+    <rect x='40' y='188' width='7' height='235' rx='3.5' fill='#178477'/>
+    <text x='70' y='230' fill='#178477' font-family='Consolas, monospace' font-size='22'>&lt;judgment&gt;</text>
+    <text x='94' y='270' fill='#526979' font-family='Consolas, monospace' font-size='19'>&lt;case-number&gt;</text>
+    <rect x='266' y='252' width='134' height='23' rx='4' fill='#F2DFAF'/>
+    <text x='273' y='270' fill='#815A17' font-family='Consolas, monospace' font-size='17'>2026-001</text>
+    <text x='94' y='309' fill='#526979' font-family='Consolas, monospace' font-size='19'>&lt;/case-number&gt;</text>
+    <text x='94' y='350' fill='#526979' font-family='Consolas, monospace' font-size='19'>&lt;decision&gt;</text>
+    <rect x='230' y='332' width='183' height='23' rx='4' fill='#F3D7CF'/>
+    <text x='237' y='350' fill='#9A4E3F' font-family='Consolas, monospace' font-size='17'>Appeal dismissed</text>
+    <text x='94' y='390' fill='#526979' font-family='Consolas, monospace' font-size='19'>&lt;/decision&gt;</text>
+    <text x='70' y='448' fill='#178477' font-family='Consolas, monospace' font-size='22'>&lt;/judgment&gt;</text>
+    <rect x='48' y='463' width='426' height='7' rx='3.5' fill='#C9C7C0'/>
+    <rect x='48' y='482' width='386' height='7' rx='3.5' fill='#D9D7D0'/>
+  </g>
+  <g transform='translate(785 158)'>
+    <rect width='280' height='380' rx='18' fill='#213747'/>
+    <rect x='26' y='29' width='70' height='7' rx='3.5' fill='#54B6A6'/>
+    <path d='M28 70h224' stroke='#506675' stroke-width='2'/>
+    <text x='28' y='117' fill='#E7B857' font-family='Arial,sans-serif' font-weight='700' font-size='18'>STRUCTURE</text>
+    <text x='28' y='151' fill='#F3F0E8' font-family='Arial,sans-serif' font-size='16'>Sections and paragraphs</text>
+    <path d='M28 175h224' stroke='#506675' stroke-width='2'/>
+    <text x='28' y='219' fill='#E7B857' font-family='Arial,sans-serif' font-weight='700' font-size='18'>MEANING</text>
+    <text x='28' y='253' fill='#F3F0E8' font-family='Arial,sans-serif' font-size='16'>Named fields and references</text>
+    <path d='M28 277h224' stroke='#506675' stroke-width='2'/>
+    <text x='28' y='321' fill='#E7B857' font-family='Arial,sans-serif' font-weight='700' font-size='18'>VALIDATION</text>
+    <text x='28' y='355' fill='#F3F0E8' font-family='Arial,sans-serif' font-size='16'>Rules systems can check</text>
+  </g>
+  <path d='M744 345h32' stroke='#178477' stroke-width='4' stroke-linecap='round'/>
+  <circle cx='760' cy='345' r='6' fill='#E8B858'/>
+</svg>
