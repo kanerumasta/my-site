@@ -4,6 +4,45 @@
   overflow: hidden;
 }
 
+.heroContent {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(16rem, 0.7fr);
+  grid-template-areas: "copy portrait";
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+.heroCopy {
+  grid-area: copy;
+}
+
+.portraitFrame {
+  grid-area: portrait;
+  position: relative;
+  justify-self: end;
+  width: clamp(15rem, 32vw, 22.5rem);
+  aspect-ratio: 1;
+  padding: 6px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--primary) 50%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--background) 90%, var(--primary));
+  box-shadow:
+    0 0 0 7px color-mix(in srgb, var(--primary) 6%, transparent),
+    0 18px 60px color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+.portrait {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
 .dotField,
 .dotField::before,
 .dotField::after {
@@ -70,6 +109,42 @@
 
 :global(.dark) .dotField {
   opacity: 0.7;
+}
+
+@media (max-width: 767px) {
+  .heroContent {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "portrait"
+      "copy";
+    gap: 3rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .heroCopy {
+    text-align: center;
+  }
+
+  .heroCopy h1,
+  .heroCopy > p {
+    margin-inline: auto;
+  }
+
+  .heroActions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .heroActions a {
+    width: min(100%, 20rem);
+    text-align: center;
+  }
+
+  .portraitFrame {
+    justify-self: center;
+    width: min(64vw, 16rem);
+  }
 }
 
 @media (max-width: 640px) {

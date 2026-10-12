@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import ProjectCard from "@/components/ProjectCard"
 import BlogCard from "@/components/BlogCard"
 import BookCover from "@/components/BookCover"
@@ -13,19 +14,30 @@ export default function Home() {
     <main>
       <section className={`${styles.hero} min-h-[calc(85vh-60px)]`}>
         <div className={styles.dotField} aria-hidden="true" />
-        <div className="mx-auto flex min-h-[calc(85vh-60px)] max-w-5xl flex-col justify-center px-6 py-24">
-          <div className="relative z-10">
+        <div className={`${styles.heroContent} mx-auto min-h-[calc(85vh-60px)] max-w-5xl px-6 py-24`}>
+          <div className={`${styles.heroCopy} relative z-10`}>
             <p className="mb-5 text-sm font-medium uppercase tracking-[0.18em] text-primary">Automation · AI workflows · Reliable systems</p>
-            <h1 className="max-w-4xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
+            <h1 className="max-w-4xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
               I turn complicated workflows into systems that work smarter.
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-relaxed text-foreground/65 sm:text-xl">
               I’m Mac, a software engineer building automation, document-processing pipelines, and modern web applications. I share the architecture, tradeoffs, and lessons behind the work.
             </p>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className={`${styles.heroActions} mt-9 flex flex-wrap gap-3`}>
               <Link href="/blog" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[0_10px_32px_color-mix(in_srgb,var(--primary)_20%,transparent)] hover:opacity-90">Read the build logs</Link>
               <Link href="/services" className="rounded-lg border border-foreground/20 bg-background/55 px-6 py-3 text-sm font-semibold backdrop-blur-sm hover:bg-foreground/5">Work with me</Link>
             </div>
+          </div>
+          <div className={styles.portraitFrame}>
+            <Image
+              src="/images/mac-profile.png"
+              alt="Portrait of Mac in a navy suit"
+              width={1024}
+              height={1536}
+              priority
+              sizes="(max-width: 640px) 240px, (max-width: 1024px) 34vw, 360px"
+              className={styles.portrait}
+            />
           </div>
         </div>
       </section>
