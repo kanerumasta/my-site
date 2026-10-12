@@ -23,7 +23,8 @@
     "nprogress": "^0.2.0",
     "prismjs": "^1.30.0",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "simple-icons": "16.34.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

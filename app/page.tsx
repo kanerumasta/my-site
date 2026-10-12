@@ -1,11 +1,85 @@
 import Link from "next/link"
 import Image from "next/image"
+import {
+  AppWindow,
+  Bot,
+  BrainCircuit,
+  Braces,
+  Database,
+  FileText,
+  MessagesSquare,
+  Network,
+  PlugZap,
+  ShieldCheck,
+  Workflow,
+  type LucideIcon,
+} from "lucide-react"
+import { siDjango, siFastapi, siNextdotjs, siPython, siTypescript } from "simple-icons"
+import type { SimpleIcon } from "simple-icons"
 import ProjectCard from "@/components/ProjectCard"
 import BlogCard from "@/components/BlogCard"
 import BookCover from "@/components/BookCover"
 import { getPosts } from "@/lib/posts"
 import { projects } from "@/lib/projects"
 import styles from "./home.module.css"
+
+type CapabilitySkill =
+  | { label: string; brand: SimpleIcon }
+  | { label: string; icon: LucideIcon }
+
+const capabilities = [
+  {
+    title: "Application development",
+    icon: AppWindow,
+    description: "Web applications and APIs built around real business workflows.",
+    skills: [
+      { label: "Python", brand: siPython },
+      { label: "TypeScript", brand: siTypescript },
+      { label: "Next.js", brand: siNextdotjs },
+      { label: "Django", brand: siDjango },
+      { label: "FastAPI", brand: siFastapi },
+      { label: "REST APIs", icon: PlugZap },
+    ],
+  },
+  {
+    title: "AI engineering",
+    icon: BrainCircuit,
+    description: "Focused AI features with clear boundaries and dependable outputs.",
+    skills: [
+      { label: "OpenAI API", icon: BrainCircuit },
+      { label: "Copilot agents", icon: Bot },
+      { label: "RAG prototypes", icon: Database },
+      { label: "Prompt design", icon: MessagesSquare },
+      { label: "Structured outputs", icon: Braces },
+    ],
+  },
+  {
+    title: "Automation & platforms",
+    icon: Workflow,
+    description: "Document-heavy processes made more reliable and easier to manage.",
+    skills: [
+      { label: "Copilot Studio", icon: Bot },
+      { label: "Power Apps", icon: AppWindow },
+      { label: "Document processing", icon: FileText },
+      { label: "System integration", icon: Network },
+      { label: "Validation & fallbacks", icon: ShieldCheck },
+    ],
+  },
+]
+
+function SkillMark({ skill }: { skill: CapabilitySkill }) {
+  return (
+    <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-white" aria-hidden="true">
+      {"brand" in skill ? (
+        <svg className="size-5" viewBox="0 0 24 24" focusable="false">
+          <path d={skill.brand.path} fill={`#${skill.brand.hex}`} />
+        </svg>
+      ) : (
+        <skill.icon size={19} strokeWidth={1.9} className="text-primary" />
+      )}
+    </span>
+  )
+}
 
 export default function Home() {
   const recentPosts = getPosts().slice(0, 2)
@@ -51,6 +125,37 @@ export default function Home() {
           <Link href="/projects" className="hidden text-sm text-foreground/60 hover:text-foreground sm:block">View all projects →</Link>
         </div>
         <div className="grid gap-6 md:grid-cols-2">{projects.map((project) => <ProjectCard key={project.title} project={project} />)}</div>
+      </section>
+
+      <section id="capabilities" className="mx-auto max-w-5xl scroll-mt-24 px-6 py-16 sm:py-20" aria-labelledby="capabilities-heading">
+        <div className="mb-9 max-w-2xl">
+          <p className="text-sm font-medium uppercase tracking-[0.18em] text-primary">Capabilities</p>
+          <h2 id="capabilities-heading" className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">What I can help you build</h2>
+          <p className="mt-4 leading-relaxed text-foreground/65">Across project work, prototypes, and hands-on technical training.</p>
+        </div>
+        <div className="grid gap-5 md:grid-cols-3">
+          {capabilities.map((capability) => {
+            const Icon = capability.icon
+
+            return (
+              <article key={capability.title} className="group rounded-3xl border border-foreground/10 bg-foreground/[0.025] p-6 transition-colors hover:border-primary/30 hover:bg-primary/[0.035] sm:p-7">
+                <span className="mb-6 grid size-16 place-items-center rounded-2xl border border-primary/20 bg-primary/[0.08] text-primary" aria-hidden="true">
+                  <Icon size={36} strokeWidth={1.6} />
+                </span>
+                <h3 className="text-xl font-semibold tracking-tight">{capability.title}</h3>
+                <p className="mt-3 min-h-12 leading-relaxed text-foreground/60">{capability.description}</p>
+                <ul className="mt-5 flex flex-wrap gap-2.5" aria-label={`${capability.title} technologies and practices`}>
+                  {capability.skills.map((skill) => (
+                    <li key={skill.label} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-foreground/10 bg-background/70 py-1.5 pl-1.5 pr-3 text-xs font-medium text-foreground/75">
+                      <SkillMark skill={skill} />
+                      <span>{skill.label}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            )
+          })}
+        </div>
       </section>
 
       <section className="mx-auto max-w-3xl px-6 py-20" aria-labelledby="latest-writing">

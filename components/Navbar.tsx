@@ -21,7 +21,6 @@ export default function Navbar() {
         </Link>
 
         <div className="flex items-center gap-1">
-          <Link href="/about" className="hidden rounded-md px-2 py-2 text-sm hover:bg-foreground/5 sm:block">About</Link>
           <Link href="/blog" className="rounded-md px-2 py-2 text-sm hover:bg-foreground/5">Blog</Link>
           <Link href="/books" className="mr-2 rounded-md px-2 py-2 text-sm hover:bg-foreground/5">Books</Link>
           <Link href="/services" className="mr-2 hidden rounded-md px-2 py-2 text-sm hover:bg-foreground/5 sm:block">Work with me</Link>

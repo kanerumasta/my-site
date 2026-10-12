@@ -10,7 +10,7 @@ export default function Footer() {
           <Link className="hover:text-foreground" href="/blog">Blog</Link>
           <Link className="hover:text-foreground" href="/books">Books</Link>
           <Link className="hover:text-foreground" href="/projects">Projects</Link>
-          <Link className="hover:text-foreground" href="/about">About</Link>
+          <Link className="hover:text-foreground" href="/#capabilities">Capabilities</Link>
           <Link className="hover:text-foreground" href="/services">Work with me</Link>
           <a className="hover:text-foreground" href="/rss.xml">RSS</a>
         </div>
