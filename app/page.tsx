@@ -171,14 +171,24 @@ export default function Home() {
       <section className="mx-auto max-w-5xl px-6 py-20" aria-labelledby="book-heading">
         <div className="grid items-center gap-9 overflow-hidden rounded-3xl border border-foreground/10 bg-foreground/[0.025] p-7 sm:p-10 md:grid-cols-[1fr_13rem] md:gap-14">
           <div>
-            <p className="text-sm font-medium uppercase tracking-[0.18em] text-primary">Forthcoming field guide</p>
+            <p className="text-sm font-medium uppercase tracking-[0.18em] text-primary">Available now on Google Play</p>
             <h2 id="book-heading" className="mt-3 max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl">Before You Automate It</h2>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-foreground/65">
               A practical book about finding the hidden rules, exceptions, spreadsheets, and human knowledge behind a workflow before choosing tools or writing code.
             </p>
-            <Link href="/books/before-you-automate-it" className="mt-7 inline-block rounded-lg border border-primary/35 px-6 py-3 text-sm font-semibold text-primary hover:bg-primary/[0.07]">
-              Read the free excerpt →
-            </Link>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a
+                href="https://play.google.com/store/books/details?id=lHIaEgAAQBAJ"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90"
+              >
+                Get it on Google Play
+              </a>
+              <Link href="/books/before-you-automate-it#excerpt" className="inline-block rounded-lg border border-primary/35 px-6 py-3 text-sm font-semibold text-primary hover:bg-primary/[0.07]">
+                Read an excerpt →
+              </Link>
+            </div>
           </div>
           <BookCover compact className="mx-auto w-full max-w-[13rem]" />
         </div>

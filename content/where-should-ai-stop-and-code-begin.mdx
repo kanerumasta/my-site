@@ -84,60 +84,17 @@ The same principle applies to permissions. AI might help explain why a user cann
 **A useful rule:** If an incorrect answer can affect money, security, legal information, or the integrity of your data, AI should not be the final authority.
 </Note>
 
-## How I Learned This While Building 1Pager
+## A Document-Processing Example
 
-I encountered this problem while building 1Pager, a system that converts legal PDF documents into a strict structured format required by other software.
+Document processing makes this boundary easy to see. A workflow may need AI to interpret varied language or layouts, while the resulting data still has to follow a strict structure.
 
-The documents came from more than 100 venues, and each venue followed different formatting rules. The input was inconsistent, but the final output had to be exact.
+In a document workflow I worked on, putting every possible rule and example into one prompt made the results less consistent. The system had too much context and too many responsibilities. Sometimes it applied the relevant rule; sometimes it mixed cases together or returned information that looked plausible but failed validation.
 
-At first, I tried to make the AI agent handle almost everything. It received global instructions, venue-specific rules, examples, and requirements for producing the final output.
+The better approach was to give the AI only the context relevant to the document at hand, then let ordinary code validate required fields and produce the exact output format.
 
-My early architecture was essentially:
+AI handled interpretation. Code handled guarantees.
 
-> “Here are more than 100 sets of rules. Good luck.”
-
-As the instructions grew, the results became less consistent. The AI had too much information and too many responsibilities. Sometimes it followed the correct venue rule. Sometimes it mixed instructions together. Sometimes it produced an output that looked convincing but was structurally wrong.
-
-Whenever something failed, my first instinct was to improve the prompt. I added another instruction, another example, or another warning.
-
-At some point, the prompt was beginning to look less like a prompt and more like an employee handbook.
-
-The real problem was not simply the wording. It was the architecture.
-
-I was asking AI to do two jobs:
-
-1. Interpret an inconsistent legal document
-2. Guarantee an exact technical output
-
-The first job was a good fit for AI. The second was better suited to ordinary code.
-
-## Moving the Boundary
-
-I redesigned the workflow so the agent received only the instructions and example for the relevant venue.
-
-The AI interpreted the document and produced a smaller, focused representation of the information. A Python program then transformed that result into the final XML format.
-
-The responsibility became clearer:
-
-```text
-Legal PDF and focused venue instructions
-                  ↓
-      AI interprets the document
-                  ↓
-     AI returns structured information
-                  ↓
-     Python validates and transforms it
-                  ↓
-            Final XML output
-```
-
-AI handled the uncertain part. Python handled the exact part.
-
-This did not remove AI from the system. It allowed AI to concentrate on the work it was actually good at.
-
-Python does not become creative when asked to produce XML. In this situation, that is a feature.
-
-I wrote more about the complete project in [How I Built 1Pager](/blog/how-i-built-1pager), but the important lesson is broader than document processing.
+I explore this design lesson in [From Complex Documents to Reliable Data](/blog/from-complex-documents-to-reliable-data). The same boundary applies far beyond document processing.
 
 ## AI Can Assist Without Being in Control
 

@@ -10,14 +10,14 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "1Pager",
+    title: "Document Processing Workflow",
     description:
-      "A legal-document pipeline that converts PDFs into venue-specific XML across more than 100 formats.",
+      "An AI-assisted workflow for turning variable documents into structured data for downstream systems.",
     outcome:
-      "Replaced one overloaded AI prompt with targeted venue configuration and a reliable Python transformation layer.",
-    stack: ["Copilot Studio", "FastAPI", "Python", "Power Apps"],
-    image: "/images/1pager-hero-v2.png",
-    href: "/blog/how-i-built-1pager",
+      "Separated flexible interpretation from deterministic validation and transformation for more consistent output.",
+    stack: ["AI-assisted processing", "Workflow design", "Data validation"],
+    image: "/images/document-workflow-hero.png",
+    href: "/blog/from-complex-documents-to-reliable-data",
     featured: true,
   },
   {

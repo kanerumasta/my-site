@@ -11,12 +11,12 @@ import {
   Users,
 } from "lucide-react"
 import BookCover from "@/components/BookCover"
-import NewsletterSignup from "@/components/NewsletterSignup"
 import { siteConfig } from "@/lib/site"
 
 const title = "Before You Automate It"
 const subtitle = "A Field Guide to Finding the Hidden Rules, Exceptions, and Spreadsheets That Actually Run the Work"
 const description = "A practical book for discovering the real workflow before choosing tools, writing code, or adding AI."
+const googlePlayUrl = "https://play.google.com/store/books/details?id=lHIaEgAAQBAJ"
 
 export const metadata: Metadata = {
   title,
@@ -29,8 +29,8 @@ export const metadata: Metadata = {
     url: "/books/before-you-automate-it",
     images: [
       {
-        url: "/images/secret-spreadsheet-peeking-hero.png",
-        alt: "A spreadsheet peeking from behind a wall, representing a hidden workflow",
+        url: "/images/books/before-you-automate-it-cover.png",
+        alt: "Cover of Before You Automate It by Mac Ibale",
       },
     ],
   },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: ["/images/secret-spreadsheet-peeking-hero.png"],
+    images: ["/images/books/before-you-automate-it-cover.png"],
   },
 }
 
@@ -70,6 +70,7 @@ export default function BeforeYouAutomateItPage() {
     },
     inLanguage: "en",
     url: bookUrl,
+    sameAs: googlePlayUrl,
   }
 
   return (
@@ -88,7 +89,7 @@ export default function BeforeYouAutomateItPage() {
           </Link>
           <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/[0.08] px-3 py-1.5 text-xs font-semibold text-primary">
             <CheckCircle2 aria-hidden="true" size={14} />
-            First draft complete · Reader review next
+            Available now on Google Play
           </div>
           <h1 className="mt-5 text-4xl font-black leading-[1.02] tracking-tight sm:text-5xl md:text-6xl">
             Before You Automate It
@@ -98,14 +99,18 @@ export default function BeforeYouAutomateItPage() {
             For developers, analysts, operations leads, and process owners asked to automate work before anyone has fully explained how that work survives exceptions.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#excerpt" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">
+            <a
+              href={googlePlayUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground"
+            >
+              Get it on Google Play <ArrowRight aria-hidden="true" size={17} />
+            </a>
+            <a href="#excerpt" className="inline-flex items-center gap-2 rounded-lg border border-foreground/20 px-6 py-3 text-sm font-semibold hover:bg-foreground/5">
               Read the excerpt <ArrowDown aria-hidden="true" size={17} />
             </a>
-            <a href="#book-updates" className="rounded-lg border border-foreground/20 px-6 py-3 text-sm font-semibold hover:bg-foreground/5">
-              Get launch updates
-            </a>
           </div>
-          <p className="mt-4 text-sm text-foreground/45">Not for sale yet. The manuscript is being refined before release.</p>
         </div>
       </section>
 
@@ -200,20 +205,12 @@ export default function BeforeYouAutomateItPage() {
           <Link href="/blog/where-should-ai-stop-and-code-begin" className="group flex items-center justify-between gap-4 rounded-xl border border-foreground/10 p-5 hover:border-primary/30">
             <span>Where Should AI Stop and Ordinary Code Begin?</span><ArrowRight aria-hidden="true" className="shrink-0 text-primary transition-transform group-hover:translate-x-1" size={18} />
           </Link>
-          <Link href="/blog/how-i-built-1pager" className="group flex items-center justify-between gap-4 rounded-xl border border-foreground/10 p-5 hover:border-primary/30">
-            <span>How I Built 1Pager</span><ArrowRight aria-hidden="true" className="shrink-0 text-primary transition-transform group-hover:translate-x-1" size={18} />
+          <Link href="/blog/from-complex-documents-to-reliable-data" className="group flex items-center justify-between gap-4 rounded-xl border border-foreground/10 p-5 hover:border-primary/30">
+            <span>From Complex Documents to Reliable Data</span><ArrowRight aria-hidden="true" className="shrink-0 text-primary transition-transform group-hover:translate-x-1" size={18} />
           </Link>
         </div>
       </section>
 
-      <section id="book-updates" className="mx-auto max-w-3xl scroll-mt-24 px-6 pb-20">
-        <NewsletterSignup
-          eyebrow="Before You Automate It"
-          heading="Get the sample and launch update."
-          description="Join the newsletter for one useful excerpt during editing and a single message when the finished book is available. No daily launch countdown."
-          buttonLabel="Keep me posted"
-        />
-      </section>
     </main>
   )
 }

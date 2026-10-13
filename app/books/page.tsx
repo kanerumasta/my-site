@@ -1,11 +1,20 @@
 import type { Metadata } from "next"
 import Image from "next/image"
-import Link from "next/link"
-import { ArrowRight, BookOpenText, CheckCircle2, ExternalLink } from "lucide-react"
-import BookCover from "@/components/BookCover"
+import { CheckCircle2, ExternalLink } from "lucide-react"
 import { absoluteUrl, siteConfig } from "@/lib/site"
 
 const publishedBooks = [
+  {
+    title: "Before You Automate It",
+    subtitle:
+      "A Field Guide to Finding the Hidden Rules, Exceptions, and Spreadsheets That Actually Run the Work",
+    fullTitle:
+      "Before You Automate It: A Field Guide to Finding the Hidden Rules, Exceptions, and Spreadsheets That Actually Run the Work",
+    description:
+      "A practical field guide to uncovering the real workflow before choosing tools, writing code, or adding AI.",
+    cover: "/images/books/before-you-automate-it-cover.png",
+    googlePlayUrl: "https://play.google.com/store/books/details?id=lHIaEgAAQBAJ",
+  },
   {
     title: "100 Business Problems AI Could Help Solve",
     subtitle: "Real Problems. Smarter Solutions.",
@@ -99,7 +108,6 @@ export default function BooksPage() {
               Published on Google Play
             </h2>
           </div>
-          <p className="text-sm text-foreground/45">Ebook prices may vary by country.</p>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -134,7 +142,7 @@ export default function BooksPage() {
                   aria-label={`Buy ${book.title} on Google Play. Opens in a new tab.`}
                   className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
-                  Buy on Google Play <ExternalLink aria-hidden="true" size={16} />
+                  Get it on Google Play <ExternalLink aria-hidden="true" size={16} />
                 </a>
               </div>
             </article>
@@ -142,48 +150,6 @@ export default function BooksPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-20" aria-labelledby="coming-next-heading">
-        <div className="mb-8">
-          <p className="text-sm font-medium uppercase tracking-[0.18em] text-primary">Coming next</p>
-          <h2 id="coming-next-heading" className="mt-2 text-3xl font-bold tracking-tight">
-            A deeper field guide in progress
-          </h2>
-        </div>
-
-        <article className="grid items-center gap-10 overflow-hidden rounded-3xl border border-foreground/10 bg-foreground/[0.025] p-6 sm:p-9 md:grid-cols-[minmax(14rem,18rem)_1fr] md:gap-14">
-          <BookCover className="mx-auto w-full max-w-[18rem]" />
-
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/[0.08] px-3 py-1.5 text-xs font-semibold text-primary">
-              <CheckCircle2 aria-hidden="true" size={14} />
-              First draft complete
-            </div>
-            <h3 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">
-              Before You Automate It
-            </h3>
-            <p className="mt-3 text-lg font-medium text-foreground/70">
-              A field guide to finding the hidden rules, exceptions, and spreadsheets that actually run the work.
-            </p>
-            <p className="mt-5 max-w-2xl leading-relaxed text-foreground/60">
-              For anyone who has been asked, “Can we automate this?” before anyone has clearly explained what “this” includes when the work does not go perfectly.
-            </p>
-
-            <ul className="mt-6 grid gap-3 text-sm text-foreground/70 sm:grid-cols-2">
-              <li className="flex items-start gap-2"><BookOpenText aria-hidden="true" className="mt-0.5 shrink-0 text-primary" size={17} />Nine practical chapters</li>
-              <li className="flex items-start gap-2"><BookOpenText aria-hidden="true" className="mt-0.5 shrink-0 text-primary" size={17} />Reusable field checklist</li>
-              <li className="flex items-start gap-2"><BookOpenText aria-hidden="true" className="mt-0.5 shrink-0 text-primary" size={17} />AI, code, and human boundaries</li>
-              <li className="flex items-start gap-2"><BookOpenText aria-hidden="true" className="mt-0.5 shrink-0 text-primary" size={17} />Accessible real-world examples</li>
-            </ul>
-
-            <Link
-              href="/books/before-you-automate-it"
-              className="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
-            >
-              Preview the book <ArrowRight aria-hidden="true" size={17} />
-            </Link>
-          </div>
-        </article>
-      </section>
     </main>
   )
 }

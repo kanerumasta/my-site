@@ -44,3 +44,4 @@ next-env.d.ts
 
 # private writing projects (keep unreleased manuscripts out of the site repository)
 /books/
+/reference-assets/

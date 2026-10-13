@@ -45,13 +45,13 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: siteConfig.title,
     description: siteConfig.description,
-    images: [{ url: "/images/1pager-hero-v2.png", alt: siteConfig.title }],
+    images: [{ url: "/images/document-workflow-hero.png", alt: siteConfig.title }],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-    images: ["/images/1pager-hero-v2.png"],
+    images: ["/images/document-workflow-hero.png"],
   },
   robots: {
     index: true,
