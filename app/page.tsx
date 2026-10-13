@@ -90,15 +90,16 @@ export default function Home() {
         <div className={styles.dotField} aria-hidden="true" />
         <div className={`${styles.heroContent} mx-auto min-h-[calc(85vh-60px)] max-w-5xl px-6 py-24`}>
           <div className={`${styles.heroCopy} relative z-10`}>
-            <p className="mb-5 text-sm font-medium uppercase tracking-[0.18em] text-primary">Automation · AI workflows · Reliable systems</p>
-            <h1 className="max-w-4xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
-              I turn complicated workflows into systems that work smarter.
+            <p className={styles.heroGreeting}>Hey, I’m Mac</p>
+            <h1 className={styles.heroHeadline}>
+              <span>I make complicated</span>
+              <span className={styles.heroHeadlineAccent}>work feel simple.</span>
             </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-foreground/65 sm:text-xl">
-              I’m Mac, a software engineer building automation, document-processing pipelines, and modern web applications. I share the architecture, tradeoffs, and lessons behind the work.
+            <p className={styles.heroDescription}>
+              Software engineer building document pipelines, AI-assisted tools, and modern web applications.
             </p>
             <div className={`${styles.heroActions} mt-9 flex flex-wrap gap-3`}>
-              <Link href="/blog" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[0_10px_32px_color-mix(in_srgb,var(--primary)_20%,transparent)] hover:opacity-90">Read the build logs</Link>
+              <Link href="/blog" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[0_10px_32px_color-mix(in_srgb,var(--primary)_20%,transparent)] hover:opacity-90">Read my writing</Link>
               <Link href="/services" className="rounded-lg border border-foreground/20 bg-background/55 px-6 py-3 text-sm font-semibold backdrop-blur-sm hover:bg-foreground/5">Work with me</Link>
             </div>
           </div>
@@ -159,9 +160,9 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-3xl px-6 py-20" aria-labelledby="latest-writing">
-        <p className="text-sm font-medium uppercase tracking-[0.18em] text-primary">Latest writing</p>
+        <p className="text-sm font-medium uppercase tracking-[0.18em] text-primary">The blog</p>
         <div className="mb-6 flex items-end justify-between gap-4">
-          <h2 id="latest-writing" className="mt-2 text-3xl font-bold tracking-tight">Notes from the workbench</h2>
+          <h2 id="latest-writing" className="mt-2 text-3xl font-bold tracking-tight">Latest articles</h2>
           <Link href="/blog" className="text-sm text-foreground/60 hover:text-foreground">All posts →</Link>
         </div>
         <div>{recentPosts.map((post) => <BlogCard key={post.slug} post={post} />)}</div>

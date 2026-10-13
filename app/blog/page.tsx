@@ -5,12 +5,12 @@ import { getPosts } from '@/lib/posts'
 import BlogCard from '@/components/BlogCard'
 
 export const metadata: Metadata = {
-  title: 'Build Logs',
-  description: 'Practical case studies and notes about automation, AI workflows, document processing, and software engineering.',
+  title: 'Writing',
+  description: 'Ideas and practical lessons about software, automation, AI, and real-world workflows.',
   alternates: { canonical: '/blog' },
   openGraph: {
-    title: 'Build Logs',
-    description: 'Practical case studies and notes about building reliable software systems.',
+    title: 'Writing',
+    description: 'Ideas and practical lessons about building reliable software systems.',
     url: '/blog',
   },
 }
@@ -21,8 +21,8 @@ export default function BlogPage() {
   return (
     <main className="mx-auto max-w-3xl px-6 py-14">
       <header className="mb-8">
-        <h1 className="mb-3 text-4xl font-bold tracking-tight">Build Logs</h1>
-        <p className="text-foreground/60">Practical notes, architecture decisions, and lessons from things I’m building.</p>
+        <h1 className="mb-3 text-4xl font-bold tracking-tight">Writing</h1>
+        <p className="text-foreground/60">Articles on software, automation, AI, and lessons from real projects.</p>
       </header>
       {startHere.length > 0 && <section className="mb-14" aria-labelledby="start-here">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">New here?</p>

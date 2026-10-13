@@ -24,7 +24,7 @@ export default function NewsletterSignup({
       aria-labelledby="newsletter-heading"
     >
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-        {eyebrow ?? "Notes from the workbench"}
+        {eyebrow ?? "The newsletter"}
       </p>
       <h2 id="newsletter-heading" className="mt-2 text-2xl font-bold tracking-tight">
         {heading ?? defaultHeading}

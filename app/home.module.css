@@ -18,6 +18,50 @@
   grid-area: copy;
 }
 
+.heroGreeting {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.35rem;
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.heroGreeting::after {
+  width: 4rem;
+  height: 1px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--primary) 75%, transparent), transparent);
+  content: "";
+}
+
+.heroHeadline {
+  max-width: 38rem;
+  margin: 0;
+  font-size: clamp(2.75rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.055em;
+}
+
+.heroHeadline span {
+  display: block;
+}
+
+.heroHeadlineAccent {
+  color: var(--primary);
+}
+
+.heroDescription {
+  max-width: 36rem;
+  margin: 1.25rem 0 0;
+  color: color-mix(in srgb, var(--foreground) 65%, transparent);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.65;
+}
+
 .portraitFrame {
   grid-area: portrait;
   position: relative;
@@ -124,6 +168,19 @@
 
   .heroCopy {
     text-align: center;
+  }
+
+  .heroGreeting {
+    justify-content: center;
+  }
+
+  .heroHeadline {
+    margin-inline: auto;
+    font-size: clamp(2.35rem, 9vw, 3.4rem);
+  }
+
+  .heroDescription {
+    margin-inline: auto;
   }
 
   .heroCopy h1,
