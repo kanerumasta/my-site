@@ -12,4 +12,3 @@ export type TBlogPost = {
   readingTime: number
   format: 'article' | 'note'
 }
-r
